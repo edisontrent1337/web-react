@@ -26,7 +26,7 @@ export default class Button extends React.Component {
   }
 
   render() {
-    const { color, mode, onClick, value, hint, validator } = this.props;
+    const { color, mode, onClick, value, hint } = this.props;
 	let validator = this.props.validator;
     const formattedHint =
       hint &&
@@ -50,7 +50,7 @@ export default class Button extends React.Component {
             color: this.state.hovering ? "#FFF" : color,
             padding: "10px 15px 10px 15px",
             borderRadius: "6px",
-            opacity: this.props.validator ? "0.8" : "0.3",
+            opacity: validator ? "0.8" : "0.3",
             transition: "0.2s",
             display: "block",
             width: mode === "big" ? "100%" : "auto"
