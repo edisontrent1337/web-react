@@ -1,3 +1,12 @@
 .hintContainer {
-    width:100%;
+    width:80%;
+    margin:0px auto;
+}
+
+.hintContainer {
+    text-align: center;
+}
+
+.hintContainer button {
+    margin:0px auto;
 }

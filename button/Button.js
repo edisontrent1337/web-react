@@ -48,7 +48,7 @@ export default class Button extends React.Component {
               "1px solid " +
               (this.state.hovering ? "transparent" : this.props.color),
             color: this.state.hovering ? "#FFF" : color,
-            padding: "10px 15px 10px 15px",
+            padding: "8px 15px 8px 15px",
             borderRadius: "6px",
             opacity: validator ? "0.8" : "0.3",
             transition: "0.2s",
