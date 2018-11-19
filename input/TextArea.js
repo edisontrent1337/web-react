@@ -1,7 +1,7 @@
 import React from "react";
 import './inputfield.fx.css';
 
-export default class InputField extends React.Component {
+export default class TextArea extends React.Component {
 
     constructor(props) {
         super(props);
@@ -25,9 +25,9 @@ export default class InputField extends React.Component {
     }
 
     render() {
-        const {name, value, type, id, onChange, hint} = this.props;
+        const {name, value, id, onChange, hint} = this.props;
         const formattedHint = hint && hint.map((elem, i) => {
-           return(<span key={i}>{elem}</span>);
+            return(<span key={i}>{elem}</span>);
         });
         return (
             <div style={{margin: "0px 0px 15px 0px"}}>
@@ -38,7 +38,7 @@ export default class InputField extends React.Component {
                 }}>
                     {this.props.label}
                 </label>
-                <input type={type} id={id} style={{
+                <textarea id={id} style={{
                     backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
                 }}
                        onFocus={this.onFocusHandler}

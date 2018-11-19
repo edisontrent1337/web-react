@@ -1,8 +1,9 @@
 import React from "react";
 import InputField from "../input/InputField.js";
 import Button from "../button/Button.js";
-import BimbayLogo from "../../components/header/bimbayLogo.js";
+import BimbayLogo from "../logo/bimbayLogo.js";
 import {Alert} from "react-bootstrap";
+import TextArea from "../input/TextArea";
 
 export default class CredentialForm extends React.Component {
     constructor(props) {
@@ -18,7 +19,9 @@ export default class CredentialForm extends React.Component {
 
     render() {
         const inputs = this.props.inputs.map((input, i) => {
-            const {label, id, type, value, handler, hint, validator} = input;
+            let {label, id, type, value, handler, hint, validator, mode, color} = input;
+            if (typeof  mode === 'undefined')
+                mode = 'regular';
             if (type === "text" || type === "password") {
                 return (
                     <InputField
@@ -32,12 +35,12 @@ export default class CredentialForm extends React.Component {
                         hint={hint}
                     />
                 );
-            } else {
+            } else if(type === "button") {
                 return (
                     <Button
-                        color={this.props.color}
+                        color={this.props.color || color}
                         onClick={handler}
-                        mode="big"
+                        mode={mode}
                         key={i}
                         value={value}
                         hint={hint}
@@ -45,15 +48,31 @@ export default class CredentialForm extends React.Component {
                     />
                 );
             }
+            else if(type==="textarea") {
+                return (
+                    <TextArea
+                        color={this.props.color}
+                        label={label}
+                        key={i}
+                        id={id}
+                        name={id}
+                        onChange={this.props.onChange}
+                        hint={hint}
+                    />
+                );
+            }
         });
 
-        const links = this.props.links.map((link, i) => {
-            return (
-                <div key={i}>
-                    <a style={{fontSize: "14px"}} href={link.href}>{link.value}</a>
-                </div>
-            );
-        });
+        let links = <div></div>;
+        if (typeof this.props.links !== 'undefined') {
+            links = this.props.links.map((link, i) => {
+                return (
+                    <div key={i}>
+                        <a style={{fontSize: "14px"}} href={link.href}>{link.value}</a>
+                    </div>
+                );
+            });
+        }
 
         return (
             <div
@@ -84,6 +103,7 @@ export default class CredentialForm extends React.Component {
                     ) : null}
                 </div>
                 {inputs}
+                <div style={{clear:"both"}}> </div>
                 {links}
             </div>
         );
