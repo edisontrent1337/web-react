@@ -17,9 +17,13 @@ export default class Hint extends React.Component {
 				<p>
 					{text}
 				</p>
-				<Button value={buttonText}
-						color={colors.green["800"]}
-						onClick={callback}/>
+				<div style={{textAlign: "center"}}>
+					<div style={{display: "inline-block"}}>
+						<Button value={buttonText}
+								color={colors.green["800"]}
+								onClick={callback}/>
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -32,6 +36,7 @@ const styles = {
 		color: colors.grey["800"],
 		padding: "25px",
 		borderRadius: "8px",
-		marginTop:"50px"
+		marginTop: "50px",
+		overflow: "hidden"
 	}
 }
