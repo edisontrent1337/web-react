@@ -18,6 +18,8 @@ export default class CredentialForm extends React.Component {
     }
 
     render() {
+
+
         const inputs = this.props.inputs.map((input, i) => {
             let {label, id, type, value, handler, hint, validator, mode, color} = input;
             if (typeof  mode === 'undefined')
@@ -35,7 +37,7 @@ export default class CredentialForm extends React.Component {
                         hint={hint}
                     />
                 );
-            } else if(type === "button") {
+            } else if (type === "button") {
                 return (
                     <Button
                         color={this.props.color || color}
@@ -48,7 +50,7 @@ export default class CredentialForm extends React.Component {
                     />
                 );
             }
-            else if(type==="textarea") {
+            else if (type === "textarea") {
                 return (
                     <TextArea
                         color={this.props.color}
@@ -74,6 +76,9 @@ export default class CredentialForm extends React.Component {
             });
         }
 
+        const {title, error} = this.props;
+
+
         return (
             <div
                 style={{
@@ -83,7 +88,7 @@ export default class CredentialForm extends React.Component {
                     border: "1px solid #CFD8DC"
                 }}
             >
-                <h4
+                {title && <h4
                     className="text-center"
                     style={{
                         color: "#012",
@@ -92,18 +97,19 @@ export default class CredentialForm extends React.Component {
                 >
                     <BimbayLogo className=""/>
                     <br/>
-                    {this.props.title}
+                    {title}
                 </h4>
+                }
                 <hr/>
                 <div>
-                    {this.props.error ? (
+                    {error ? (
                         <Alert bsStyle="danger">
                             {this.props.error}
                         </Alert>
                     ) : null}
                 </div>
                 {inputs}
-                <div style={{clear:"both"}}> </div>
+                <div style={{clear: "both"}}></div>
                 {links}
             </div>
         );
