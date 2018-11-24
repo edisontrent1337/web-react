@@ -1,5 +1,6 @@
 import React from "react";
 import './inputfield.fx.css';
+import colors from "../colors/colors";
 
 export default class TextArea extends React.Component {
 
@@ -39,7 +40,7 @@ export default class TextArea extends React.Component {
                     {this.props.label}
                 </label>
                 <textarea id={id} style={{
-                    backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
+                    backgroundColor: (this.state.clicked ? "#FFF" : colors.blueGrey["50"]),
                 }}
                        onFocus={this.onFocusHandler}
                        onBlur={this.onFocusOutHandler}

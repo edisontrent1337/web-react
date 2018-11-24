@@ -1,5 +1,6 @@
 import React from "react";
 import './inputfield.fx.css';
+import colors from "../colors/colors";
 
 export default class InputField extends React.Component {
 
@@ -32,7 +33,7 @@ export default class InputField extends React.Component {
 		return (
 			<div style={{margin: "0px 0px 15px 0px"}}>
 				{this.props.label && <label style={{
-					color: "#616161",
+					color: colors.grey["700"],
 					fontSize: "12px",
 					fontWeight: "bold"
 				}}>

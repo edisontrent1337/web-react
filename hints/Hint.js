@@ -10,18 +10,22 @@ export default class Hint extends React.Component {
 	}
 
 	render() {
-		const {text, buttonText, heading, callback} = this.props;
+		const {icon, text, buttonText, heading, callback} = this.props;
 		return (
 			<div className="hintContainer" style={styles.base}>
+				<h1>
+					<i className={icon}></i>
+				</h1>
 				<h2>{heading}</h2>
 				<p>
 					{text}
+					{this.props.children}
 				</p>
 				<div style={{textAlign: "center"}}>
 					<div style={{display: "inline-block"}}>
-						<Button value={buttonText}
-								color={colors.green["800"]}
-								onClick={callback}/>
+						{buttonText && <Button value={buttonText}
+											   color={colors.green["800"]}
+											   onClick={callback}/>}
 					</div>
 				</div>
 			</div>
@@ -37,6 +41,7 @@ const styles = {
 		padding: "25px",
 		borderRadius: "8px",
 		marginTop: "50px",
+		marginBottom:"50px",
 		overflow: "hidden"
 	}
 }
