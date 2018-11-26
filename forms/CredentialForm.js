@@ -97,11 +97,11 @@ export default class CredentialForm extends React.Component {
 					}}
 				>
 					<BimbayLogo className=""/>
-					<br/>
 					{title}
 				</h4>
 				}
-				<hr/>
+				{title && <hr/>}
+
 				<div>
 					{error ? (
 						<Alert bsStyle="danger">
