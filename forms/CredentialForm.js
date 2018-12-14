@@ -5,6 +5,7 @@ import BimbayLogo from "../logo/bimbayLogo.js";
 import {Alert} from "react-bootstrap";
 import TextArea from "../input/TextArea";
 import colors from "../colors/colors";
+import Message from "../message/Message";
 
 export default class CredentialForm extends React.Component {
 	constructor(props) {
@@ -81,7 +82,7 @@ export default class CredentialForm extends React.Component {
 				}
 			});
 
-			let links= "";
+			let links = "";
 			if (typeof this.props.links !== 'undefined') {
 				links = this.props.links.map((link, i) => {
 					return (
@@ -124,9 +125,7 @@ export default class CredentialForm extends React.Component {
 
 					<div>
 						{error ? (
-							<Alert bsStyle="danger">
-								{error}
-							</Alert>
+							<Message bsStyle="danger" heading={error}/>
 						) : null}
 					</div>
 					{inputs}
