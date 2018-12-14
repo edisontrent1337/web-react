@@ -37,10 +37,13 @@ export default class InputField extends React.Component {
 			return "Loading";
 		}
 		else {
-			const {name, value, type, id, onChange, hint, placeholder, handler} = this.props;
+			const {name, value, type, id, onChange, hint, placeholder, handler, clickable} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
 				return (<span key={i}>{elem}</span>);
 			});
+			if (clickable &&! this.state.clicked) {
+				return <h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>;
+			}
 			return (
 				<div style={{margin: "0px 0px 15px 0px"}}>
 					{this.props.label && <label style={{

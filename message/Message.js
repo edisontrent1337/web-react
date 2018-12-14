@@ -28,6 +28,7 @@ export default class Message extends React.Component {
 			return (
 				<Alert bsStyle={this.props.bsStyle} onDismiss={dismissable ? this.handleDismiss : undefined}>
 					<i className="fas fa-exclamation-triangle" style={{marginRight: "6px"}}></i>{this.props.heading}
+					<br/>
 					{this.props.message}
 				</Alert>
 			);
