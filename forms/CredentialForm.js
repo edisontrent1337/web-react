@@ -22,7 +22,7 @@ export default class CredentialForm extends React.Component {
 
 
         const inputs = this.props.inputs.map((input, i) => {
-            let {label, id, type, value, handler, hint, validator, mode, color} = input;
+            let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter} = input;
             if (typeof  mode === 'undefined')
                 mode = 'regular';
             if (type === "text" || type === "password") {
@@ -36,6 +36,7 @@ export default class CredentialForm extends React.Component {
                         type={type}
                         onChange={this.props.onChange}
                         hint={hint}
+                        onBlur={triggerOnEnter ? handler : null}
                     />
                 );
             } else if (type === "button") {

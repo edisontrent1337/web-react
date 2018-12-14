@@ -27,7 +27,7 @@ export default class Button extends React.Component {
     }
 
     render() {
-        const {color, mode, onClick, value, hint} = this.props;
+        const {color, mode, onClick, value, hint, triggerOnEnter} = this.props;
         let validator = this.props.validator;
         const formattedHint =
             hint &&
