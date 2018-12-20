@@ -36,8 +36,9 @@ export default class CredentialForm extends React.Component {
 			return "Loading"
 		}
 		else {
+			let lastFloat = undefined;
 			const inputs = this.props.inputs.map((input, i) => {
-				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter} = input;
+				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, float, width} = input;
 				if (typeof  mode === 'undefined')
 					mode = 'regular';
 				if (type === "text" || type === "password") {
@@ -52,10 +53,13 @@ export default class CredentialForm extends React.Component {
 							onChange={this.props.onChange}
 							hint={hint}
 							handler={triggerOnEnter === true ? handler : undefined}
+							float={float}
+							width={width}
 						/>
 					);
 				} else if (type === "button") {
 					return (
+
 						<Button
 							color={this.props.color || color}
 							onClick={handler}
@@ -80,6 +84,7 @@ export default class CredentialForm extends React.Component {
 						/>
 					);
 				}
+				lastFloat = float;
 			});
 
 			let links = "";

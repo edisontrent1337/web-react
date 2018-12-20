@@ -41,24 +41,21 @@ export default class InputField extends React.Component {
 			return "Loading";
 		}
 		else {
-			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label} = this.props;
+
+			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
 				return (<span key={i}>{elem}</span>);
 			});
 			if (clickable && !this.state.clicked) {
-				return <span>
-					{label && <label style={{
-						color: colors.grey["700"],
-						fontSize: "12px",
-						fontWeight: "bold"
-					}}>
-						{label}
-					</label>
-					}<h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>
-				</span>;
+				return <h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>;
 			}
 			return (
-				<div style={{margin: "0px 0px 15px 0px"}}>
+				<div style={{
+					margin: "0px 0px 15px 0px",
+					float: float,
+					marginRight: float === "left" ? "20px" : "0px",
+					width: width + "px"
+				}}>
 					{label && <label style={{
 						color: colors.grey["700"],
 						fontSize: "12px",
@@ -70,6 +67,7 @@ export default class InputField extends React.Component {
 					}
 					<input type={type} id={id} style={{
 						backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
+
 					}}
 						   onFocus={this.onFocusHandler}
 						   onBlur={this.onFocusOutHandler}

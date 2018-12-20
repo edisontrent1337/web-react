@@ -51,7 +51,7 @@ export default class TextArea extends React.Component {
 					}}>
 						{label}
 					</label>
-					}<h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>
+					}<p onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</p>
 				</span>;
 			}
 			else {
