@@ -38,12 +38,21 @@ export default class TextArea extends React.Component {
 			return "Loading";
 		}
 		else {
-			const {name, value, id, onChange, hint, clickable, placeholder, handler} = this.props;
+			const {name, value, id, onChange, hint, clickable, placeholder, handler, label} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
 				return (<span key={i}>{elem}</span>);
 			});
 			if (clickable && !this.state.clicked) {
-				return <a onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</a>;
+				return <span>
+					{label && <label style={{
+						color: colors.grey["700"],
+						fontSize: "12px",
+						fontWeight: "bold"
+					}}>
+						{label}
+					</label>
+					}<h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>
+				</span>;
 			}
 			else {
 				return (
@@ -53,7 +62,7 @@ export default class TextArea extends React.Component {
 							fontSize: "12px",
 							fontWeight: "bold"
 						}}>
-							{this.props.label}
+							{label}
 						</label>
 						<textarea id={id} style={{
 							backgroundColor: (this.state.clicked ? "#FFF" : colors.blueGrey["50"]),

@@ -21,15 +21,19 @@ export default class InputField extends React.Component {
 	}
 
 	onFocusHandler() {
-		this.setState({
-			clicked: true
-		})
+		if (this.props.handler) {
+			this.setState({
+				clicked: true
+			})
+		}
 	}
 
 	onFocusOutHandler() {
-		this.setState({
-			clicked: false
-		});
+		if (this.props.handler) {
+			this.setState({
+				clicked: false
+			});
+		}
 	}
 
 	render() {
@@ -37,21 +41,31 @@ export default class InputField extends React.Component {
 			return "Loading";
 		}
 		else {
-			const {name, value, type, id, onChange, hint, placeholder, handler, clickable} = this.props;
+			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
 				return (<span key={i}>{elem}</span>);
 			});
-			if (clickable &&! this.state.clicked) {
-				return <h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>;
-			}
-			return (
-				<div style={{margin: "0px 0px 15px 0px"}}>
-					{this.props.label && <label style={{
+			if (clickable && !this.state.clicked) {
+				return <span>
+					{label && <label style={{
 						color: colors.grey["700"],
 						fontSize: "12px",
 						fontWeight: "bold"
 					}}>
-						{this.props.label}
+						{label}
+					</label>
+					}<h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>
+				</span>;
+			}
+			return (
+				<div style={{margin: "0px 0px 15px 0px"}}>
+					{label && <label style={{
+						color: colors.grey["700"],
+						fontSize: "12px",
+						fontWeight: "bold"
+					}}>
+
+						{clickable ? label + " BEARBEITEN" : label}
 					</label>
 					}
 					<input type={type} id={id} style={{
