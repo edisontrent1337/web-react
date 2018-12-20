@@ -47,7 +47,16 @@ export default class InputField extends React.Component {
 				return (<span key={i}>{elem}</span>);
 			});
 			if (clickable && !this.state.clicked) {
-				return <h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>;
+				return <span>
+					{label && <label style={{
+						color: colors.grey["700"],
+						fontSize: "12px",
+						fontWeight: "bold"
+					}}>
+						{label}
+					</label>
+					}<h4 onClick={this.onFocusHandler} onBlur={this.onFocusOutHandler}>{placeholder}</h4>
+				</span>;
 			}
 			return (
 				<div style={{
