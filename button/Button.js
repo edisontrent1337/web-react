@@ -1,5 +1,6 @@
 import React from "react";
 import "./button.fx.css";
+import LoadingIndicator from "../indicators/LoadingIndicator";
 
 export default class Button extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class Button extends React.Component {
     }
 
     render() {
-        const {color, mode, onClick, value, hint} = this.props;
+        const {color, mode, onClick, value, hint, loading} = this.props;
         let validator = this.props.validator;
         const formattedHint =
             hint &&
@@ -44,14 +45,14 @@ export default class Button extends React.Component {
                     style={{
                         fontSize: "18px",
                         fontWeight: "400",
-                        backgroundColor: this.state.hovering ? color : "transparent",
+                        backgroundColor: loading ? "white" : this.state.hovering ? color : "transparent",
                         border:
                             "1px solid " +
                             (this.state.hovering ? "transparent" : this.props.color),
                         color: this.state.hovering ? "#FFF" : color,
                         padding: mode === "big" ? "10px 15px 10px 15px" : "5px 15px 5px 15px",
                         borderRadius: "6px",
-                        opacity: validator ? "0.8" : "0.3",
+                        opacity: loading ? "1.0" : validator ? "0.8" : "0.3",
                         transition: "0.2s",
                         display: "block",
                         width: mode === "big" ? "100%" : "auto",
@@ -63,7 +64,7 @@ export default class Button extends React.Component {
                     onMouseOver={this.hoverHandler}
                     disabled={!validator}
                 >
-                    {value}
+                    {loading ? <LoadingIndicator width={32} height={32}/> : value}
                 </button>
                 <span
                     style={{

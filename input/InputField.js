@@ -42,7 +42,7 @@ export default class InputField extends React.Component {
 		}
 		else {
 
-			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width} = this.props;
+			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width, pattern, maxLength} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
 				return (<span key={i}>{elem}</span>);
 			});
@@ -76,6 +76,7 @@ export default class InputField extends React.Component {
 					}
 					<input type={type} id={id} style={{
 						backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
+						textAlign: this.props.align
 
 					}}
 						   onFocus={this.onFocusHandler}
@@ -91,6 +92,8 @@ export default class InputField extends React.Component {
 						   }}
 						   name={name}
 						   placeholder={placeholder}
+						   pattern={pattern}
+						   maxLength={maxLength}
 					/>
 					<span style={{fontSize: "12px", color: "#616161"}}>{formattedHint}</span>
 				</div>

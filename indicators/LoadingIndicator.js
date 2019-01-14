@@ -4,11 +4,10 @@ import loading from "./loading.gif";
 export default class LoadingIndicator extends React.Component {
 
     render() {
-        const mode = this.props.mode;
         return (
             <div style={{
-                width: mode === "small" ? 50 : 200 + "px",
-                height: mode === "small" ? 50 : 200 + "px",
+                width: this.props.width +  "px",
+                height: this.props.height +  "px",
                 margin: "0px auto",
                 opacity: "0.66"
             }}>

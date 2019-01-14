@@ -2,7 +2,6 @@ import React from "react";
 import InputField from "../input/InputField.js";
 import Button from "../button/Button.js";
 import BimbayLogo from "../logo/bimbayLogo.js";
-import {Alert} from "react-bootstrap";
 import TextArea from "../input/TextArea";
 import colors from "../colors/colors";
 import Message from "../message/Message";
@@ -38,10 +37,10 @@ export default class CredentialForm extends React.Component {
 		else {
 			let lastFloat = undefined;
 			const inputs = this.props.inputs.map((input, i) => {
-				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, float, width} = input;
+				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, float, width, loading, pattern, maxLength, align} = input;
 				if (typeof  mode === 'undefined')
 					mode = 'regular';
-				if (type === "text" || type === "password") {
+				if (type === "text" || type === "password" || type==="number") {
 					return (
 						<InputField
 							color={this.props.color}
@@ -55,6 +54,9 @@ export default class CredentialForm extends React.Component {
 							handler={triggerOnEnter === true ? handler : undefined}
 							float={float}
 							width={width}
+							pattern={pattern}
+							maxLength={maxLength}
+							align={align}
 						/>
 					);
 				} else if (type === "button") {
@@ -68,6 +70,7 @@ export default class CredentialForm extends React.Component {
 							value={value}
 							hint={hint}
 							validator={validator}
+							loading={loading}
 						/>
 					);
 				}

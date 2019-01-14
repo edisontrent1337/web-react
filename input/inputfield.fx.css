@@ -12,3 +12,12 @@ input, textarea {
     border-radius: 6px;
     transition: 0.3s;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:invalid {
+    border: 1px solid red;
+}
