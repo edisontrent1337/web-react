@@ -17,8 +17,7 @@ export default class Container extends React.Component {
 			}}>
 				<div style={{
 					width: "100%",
-					height: "100%",
-					overflowY: "scroll"
+					overflowY: "auto"
 				}}>
 					{this.props.children}
 				</div>
