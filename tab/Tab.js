@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../../ilma-react/colors/colors";
+import colors from "../colors/colors";
 import "./tab.fx.css";
 
 export default class Tab extends React.Component {
