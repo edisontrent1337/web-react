@@ -55,7 +55,7 @@ export default class Button extends React.Component {
                         opacity: loading ? "1.0" : validator ? "0.8" : "0.3",
                         transition: "0.2s",
                         display: "block",
-                        width: width || "auto",
+                        width: width || (mode ==="big" ? "100%" : "auto"),
                         float: 'left',
                         marginRight: "10px"
                     }}
