@@ -28,7 +28,7 @@ export default class Button extends React.Component {
     }
 
     render() {
-        const {color, mode, onClick, value, hint, loading} = this.props;
+        const {color, mode, onClick, value, hint, loading, fontSize, width} = this.props;
         let validator = this.props.validator;
         const formattedHint =
             hint &&
@@ -43,19 +43,19 @@ export default class Button extends React.Component {
                 <button
                     className="button"
                     style={{
-                        fontSize: "18px",
+                        fontSize: (fontSize ? fontSize + "px" : "18px"),
                         fontWeight: "400",
                         backgroundColor: loading ? "white" : this.state.hovering ? color : "transparent",
                         border:
                             "1px solid " +
                             (this.state.hovering ? "transparent" : this.props.color),
                         color: this.state.hovering ? "#FFF" : color,
-                        padding: mode === "big" ? "10px 15px 10px 15px" : "5px 15px 5px 15px",
+                        padding: mode === "icon" ? "0" : "5px 15px 5px 15px",
                         borderRadius: "6px",
                         opacity: loading ? "1.0" : validator ? "0.8" : "0.3",
                         transition: "0.2s",
                         display: "block",
-                        width: mode === "big" ? "100%" : "auto",
+                        width: width || "auto",
                         float: 'left',
                         marginRight: "10px"
                     }}

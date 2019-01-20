@@ -4,24 +4,43 @@ import "./tab.fx.css";
 
 export default class Tab extends React.Component {
 
+	constructor(props) {
+		super(props);
+		this.setActive = this.setActive.bind(this);
+		this.setInactive = this.setInactive.bind(this);
+	}
+
 	render() {
 		const {title, url} = this.props;
 		return (
 			<a className={"tab"} style={{
 				fontSize: "16px",
-				fontWeight: "bold",
 				display: "inline-block",
 				textAlign: "left",
-				borderBottom: "2px solid " + colors.blue["600"],
-				padding: "10px 10px 0 10px",
+				border: ("1px solid " + colors.grey["200"]),
+				borderBottom: (this.props.active ? "2px solid " + colors.blue["600"] : "none"),
+				padding: "10px 20px 0 20px",
 				height: "40px",
 				transition: "0.2s",
-				color:colors.grey["800"]
+				color: colors.grey["800"],
+				marginRight: "-1px",
+				backgroundColor: (this.props.active ? "rgba(30,30,30,0.05)" : "white"),
+				borderRadius: "8px 8px 0 0",
 			}}
 			   href={url}
+			   onClick={this.setActive}
+			   onBlur={this.setInactive}
 			>
 				{title}
 			</a>
 		);
+	}
+
+	setActive() {
+		this.setState({active: true});
+	}
+
+	setInactive() {
+		this.setState({active: false});
 	}
 }

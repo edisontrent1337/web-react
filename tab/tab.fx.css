@@ -1,4 +1,9 @@
 .tab:hover {
     cursor:pointer;
     background-color: rgba(30,30,30,0.05);
+    text-decoration: none;
+}
+.tab:active {
+    cursor:pointer;
+    background-color: rgba(30,30,30,0.05);
 }

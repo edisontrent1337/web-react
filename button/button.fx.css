@@ -2,3 +2,19 @@
     cursor: pointer;
     opacity: 1.0;
 }
+button:active, button:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+}
+.cf:before,
+.cf:after {
+    content: "";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}

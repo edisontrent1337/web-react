@@ -44,12 +44,12 @@ export default class InputField extends React.Component {
         }
         else {
 
-            const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width, pattern, maxLength} = this.props;
+            const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width, pattern, maxLength, color} = this.props;
             const formattedHint = hint && hint.map((elem, i) => {
                 return (<span key={i}>{elem}</span>);
             });
             if (clickable && !this.state.clicked) {
-                return <span style={{color: colors.grey["700"]}}>
+                return <span style={{color: color || colors.grey["700"]}}>
                 {label && <label style={{
                     color: colors.grey["700"],
                     fontSize: "12px",
@@ -90,6 +90,7 @@ export default class InputField extends React.Component {
                         <input type={type} id={id} style={{
                             backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
                             textAlign: this.props.align,
+                            fontSize:"18px"
                         }}
                                onFocus={this.onFocusHandler}
                                onBlur={this.onFocusOutHandler}

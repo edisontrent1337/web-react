@@ -5,6 +5,7 @@ import BimbayLogo from "../logo/bimbayLogo.js";
 import TextArea from "../input/TextArea";
 import colors from "../colors/colors";
 import Message from "../message/Message";
+import Select from "../input/Select";
 
 export default class CredentialForm extends React.Component {
 	constructor(props) {
@@ -37,13 +38,13 @@ export default class CredentialForm extends React.Component {
 		else {
 			let lastFloat = undefined;
 			const inputs = this.props.inputs.map((input, i) => {
-				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, float, width, loading, pattern, maxLength, align} = input;
+				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, loading, float, width, pattern, maxLength, align, options} = input;
 				if (typeof  mode === 'undefined')
 					mode = 'regular';
-				if (type === "text" || type === "password" || type==="number") {
+				if (type === "text" || type === "password" || type === "number") {
 					return (
 						<InputField
-							color={this.props.color}
+							color={color}
 							label={label}
 							key={i}
 							id={id}
@@ -86,6 +87,10 @@ export default class CredentialForm extends React.Component {
 							hint={hint}
 						/>
 					);
+				}
+				else if (type === "select") {
+					return <Select options={options} key={i} name={id} id={id} hint={hint}
+								   onChange={this.props.onChange}/>
 				}
 				lastFloat = float;
 			});

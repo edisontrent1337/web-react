@@ -1,8 +1,8 @@
-textarea:focus, input:focus {
+textarea:focus, input:focus, select:focus {
     outline: none;
 }
 
-input, textarea {
+input, textarea, select {
     border: 1px solid #CFD8DC;
     background-color: #f2f2f2;
     display: block;
@@ -21,3 +21,4 @@ input[type=number]::-webkit-outer-spin-button {
 input:invalid {
     border: 1px solid red;
 }
+
