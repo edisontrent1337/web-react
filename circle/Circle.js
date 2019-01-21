@@ -44,11 +44,12 @@ export default class Circle extends React.Component {
                 float: "left",
                 color: this.state.fontColor,
                 textDecoration: "none",
+                fontSize:"24px",
                 border: "1px solid " + colors.grey["50"]
             }}>
                 <div style={{
                     textAlign: "center",
-                    marginTop: "8px"
+                    verticalAlign:"center"
                 }}>{title}</div>
             </a>
         );

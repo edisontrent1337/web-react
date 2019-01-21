@@ -7,3 +7,9 @@
     cursor:pointer;
     background-color: rgba(30,30,30,0.05);
 }
+
+@media (max-width: 1024px) {
+    .tabBar{
+        display: none;
+    }
+}

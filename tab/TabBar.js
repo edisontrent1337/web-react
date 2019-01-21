@@ -1,6 +1,6 @@
 import React from "react";
 import Tab from "./Tab";
-
+import './tab.fx.css'
 export default class TabBar extends React.Component {
 
 
@@ -15,7 +15,7 @@ export default class TabBar extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className={"tabBar"}>
 				{this.props.titles.map((title, i) => {
 					return <span onClick={() => {this.wasClicked(i); this.props.switchCallback(title);}} key={i}>
 						<Tab title={title} key={i} active={(i===this.state.clickedTab)}/>
