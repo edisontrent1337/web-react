@@ -20,7 +20,7 @@ export default class Circle extends React.Component {
         const numberOfColors = Object.keys(colors).length;
         let randomIndex = Math.floor(Math.random() * (numberOfColors));
         let color = Object.keys(colors)[randomIndex];
-        while (color.includes("black") || color.includes("white") || colors.includes("Icon") || colors.includes("Text")) {
+        while (color.includes("black") || color.includes("white") || color.includes("Icon") || color.includes("Text")) {
             randomIndex = Math.floor(Math.random() * (numberOfColors));
             color = Object.keys(colors)[randomIndex];
         }
