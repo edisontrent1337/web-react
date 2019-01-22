@@ -5,47 +5,26 @@ export default class Circle extends React.Component {
 
     constructor(props) {
         super(props);
-        this.decideOnRandomColor = this.decideOnRandomColor.bind(this);
         this.state = {
             backgroundColor: undefined,
             fontColor: undefined
         };
     }
 
-    componentDidMount() {
-        this.decideOnRandomColor();
-    }
-
-    decideOnRandomColor() {
-        const numberOfColors = Object.keys(colors).length;
-        let randomIndex = Math.floor(Math.random() * (numberOfColors));
-        let color = Object.keys(colors)[randomIndex];
-        while (color.includes("black") || color.includes("white") || color.includes("Icon") || color.includes("Text")) {
-            randomIndex = Math.floor(Math.random() * (numberOfColors));
-            color = Object.keys(colors)[randomIndex];
-        }
-        let backgroundColor = colors[color]["100"];
-        let fontColor = colors[color]["400"];
-        this.setState({
-            backgroundColor: backgroundColor,
-            fontColor: fontColor
-        });
-    }
-
     render() {
-        const {title, url} = this.props;
+        const {title, url, color} = this.props;
         return (
             <a href={url} style={{
                 borderRadius: "50%",
-                display: "inline-block",
                 width: "40px",
+                display:"block",
                 height: "40px",
-                backgroundColor: this.state.backgroundColor,
+                backgroundColor: color["100"],
                 float: "left",
-                color: this.state.fontColor,
+                color: color["400"],
                 textDecoration: "none",
                 fontSize:"24px",
-                border: "1px solid " + colors.grey["50"]
+                border: "1px solid " + colors.grey["50"],
             }}>
                 <div style={{
                     textAlign: "center",
