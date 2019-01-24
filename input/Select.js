@@ -7,12 +7,14 @@ export default class Select extends React.Component {
 	}
 
 	render() {
-		const {label, options, onChange, id, hint} = this.props;
+		const {label, options, onChange, id, hint,selectedOption} = this.props;
 		const formattedHint =
 			hint &&
 			hint.map((elem, i) => {
 				return <span key={i}> {elem} </span>;
 			});
+		console.log(selectedOption);
+		console.log(options);
 		return (
 			<div style={{margin: "0px 0px 15px 0px"}}>
 				<label style={{
@@ -23,7 +25,7 @@ export default class Select extends React.Component {
 					{label}
 				</label>
 
-				<select name={id} id={id} onChange={onChange}>
+				<select name={id} id={id} onChange={onChange} defaultValue={selectedOption}>
 					{options.map((option, i) => {
 						return <option key={i} value={option.toLowerCase()}>{option}</option>
 					})}

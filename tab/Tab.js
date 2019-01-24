@@ -17,13 +17,13 @@ export default class Tab extends React.Component {
 				display: "inline-block",
 				textAlign: "left",
 				border: ("1px solid " + colors.grey["200"]),
-				borderBottom: (this.props.active ? "2px solid " + colors.blue["600"] : "none"),
+				borderBottom: (this.props.active ? "4px solid " + colors.blue["400"] : "1px solid " + colors.grey["300"]),
 				padding: "10px 20px 0 20px",
 				height: "40px",
 				transition: "0.2s",
 				color: colors.grey["800"],
 				marginRight: "-1px",
-				backgroundColor: (this.props.active ? "rgba(30,30,30,0.05)" : "white"),
+				backgroundColor: ("white"),
 				borderRadius: "8px 8px 0 0",
 			}}
 			   href={url}

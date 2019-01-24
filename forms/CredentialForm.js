@@ -117,7 +117,8 @@ export default class CredentialForm extends React.Component {
 						backgroundColor: "#FFF",
 						padding: "30px",
 						borderRadius: "6px",
-						border: "1px solid " + colors.blueGrey["100"]
+						border: "1px solid " + colors.blueGrey["100"],
+						color:colors.grey["700"]
 					}}
 				>
 					{title && <h4
@@ -141,6 +142,8 @@ export default class CredentialForm extends React.Component {
 							<Message bsStyle="danger" heading={error}/>
 						) : null}
 					</div>
+					<div>{this.props.hint && <Message heading={this.props.hint}/>}</div>
+					{this.props.children}
 					{inputs}
 					<div style={{clear: "both"}}></div>
 					{links}
