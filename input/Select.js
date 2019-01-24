@@ -13,8 +13,6 @@ export default class Select extends React.Component {
 			hint.map((elem, i) => {
 				return <span key={i}> {elem} </span>;
 			});
-		console.log(selectedOption);
-		console.log(options);
 		return (
 			<div style={{margin: "0px 0px 15px 0px"}}>
 				<label style={{
