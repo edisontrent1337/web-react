@@ -12,7 +12,7 @@ export default class Circle extends React.Component {
     }
 
     render() {
-        const {title, url, color} = this.props;
+        const {title, url, color, fontSize} = this.props;
         return (
             <a href={url} style={{
                 borderRadius: "50%",
@@ -23,7 +23,7 @@ export default class Circle extends React.Component {
                 float: "left",
                 color: color["400"],
                 textDecoration: "none",
-                fontSize:"24px",
+                fontSize: fontSize ? fontSize : "24px",
                 border: "1px solid " + colors.grey["50"],
             }}>
                 <div style={{
