@@ -17,8 +17,8 @@ export default class TabBar extends React.Component {
 		return (
 			<div className={"tabBar"}>
 				{this.props.titles.map((title, i) => {
-					return <span onClick={() => {this.wasClicked(i); this.props.switchCallback(title);}} key={i}>
-						<Tab title={title} key={i} active={(i===this.state.clickedTab)}/>
+					return <span onClick={() => {this.wasClicked(i); this.props.switchCallback(title.toUpperCase());}} key={i}>
+						<Tab title={title.toUpperCase()} key={i} active={(i===this.state.clickedTab)}/>
 					</span>
 				})}
 			</div>
