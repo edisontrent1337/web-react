@@ -16,7 +16,6 @@ export default class Tab extends React.Component {
 				fontSize: "16px",
 				display: "inline-block",
 				textAlign: "left",
-				border: ("1px solid " + colors.grey["200"]),
 				borderBottom: (this.props.active ? "4px solid " + colors.blue["400"] : "1px solid " + colors.grey["300"]),
 				padding: "10px 20px 0 20px",
 				height: "40px",
