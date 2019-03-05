@@ -139,7 +139,7 @@ export default class CredentialForm extends React.Component {
 
 					<div>
 						{error ? (
-							<Message bsStyle="danger" heading={error}/>
+							<Message bsStyle="danger" heading={"An error occurred."} message={error}/>
 						) : null}
 					</div>
 					<div>{this.props.hint && <Message heading={this.props.hint}/>}</div>

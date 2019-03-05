@@ -27,8 +27,12 @@ export default class Message extends React.Component {
 			const {dismissable, icon} = this.props;
 			return (
 				<Alert bsStyle={this.props.bsStyle} onDismiss={dismissable ? this.handleDismiss : undefined}>
-					<i className={(icon ? icon : "fas fa-exclamation-triangle")} style={{marginRight: "6px"}}></i>{this.props.heading}
-					{this.props.message}
+					<div style={{fontWeight: "bold"}}><i className={(icon ? icon : "fas fa-exclamation-triangle")}
+														 style={{marginRight: "6px"}}></i>
+						{this.props.heading}</div>
+					<div>
+						{this.props.message}
+					</div>
 				</Alert>
 			);
 		}
