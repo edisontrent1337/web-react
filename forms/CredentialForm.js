@@ -107,10 +107,6 @@ export default class CredentialForm extends React.Component {
 			}
 
 			let {title, error, logo} = this.props;
-			if (typeof logo === "undefined") {
-				logo = <BimbayLogo/>;
-			}
-
 			return (
 				<div
 					style={{
