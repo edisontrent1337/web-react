@@ -91,6 +91,7 @@ export default class InputField extends React.Component {
 						<input type={type} id={id} style={{
 							backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
 							textAlign: this.props.align,
+							color: colors.blueGrey["800"],
 							fontSize: "18px"
 						}}
 							   onFocus={this.onFocusHandler}

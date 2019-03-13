@@ -17,10 +17,10 @@ export default class Hint extends React.Component {
 					<i className={icon}></i>
 				</h1>
 				<h2>{heading}</h2>
-				<p>
-					{text}
+				<div>
+					<p>{text}</p>
 					{this.props.children}
-				</p>
+				</div>
 				<div style={{textAlign: "center"}}>
 					<div style={{display: "inline-block"}}>
 						{buttonText && <Button value={buttonText}
