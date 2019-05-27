@@ -1,5 +1,7 @@
-import Button from './lib/button'
+import Button from './lib/button';
+import InputField from './lib/input';
 
 export {
-  Button
+  Button,
+  InputField
 }

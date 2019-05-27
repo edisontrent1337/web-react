@@ -39,7 +39,7 @@ export default class Button extends React.Component {
 			validator = () => true;
 		}
 		return (
-			<div>
+			<div style={{display: "inline-block"}}>
 				<button
 					className="button"
 					style={{
@@ -56,7 +56,6 @@ export default class Button extends React.Component {
 						transition: "0.2s",
 						display: "block",
 						width: width || (mode === "big" ? "100%" : "auto"),
-						float: 'left',
 						marginRight: "10px"
 					}}
 					onClick={onClick}

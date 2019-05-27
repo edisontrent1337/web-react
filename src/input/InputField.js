@@ -72,7 +72,8 @@ export default class InputField extends React.Component {
 					margin: "0px 0px 15px 0px",
 					float: float,
 					marginRight: float === "left" ? "20px" : "0px",
-					width: width + "px"
+					width: width + "px",
+					display: "inline-block"
 				}}>
 					{label && <label style={{
 						color: colors.grey["700"],
