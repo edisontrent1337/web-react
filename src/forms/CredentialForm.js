@@ -1,7 +1,6 @@
 import React from "react";
 import InputField from "../input/InputField.js";
 import Button from "../button/Button.js";
-import BimbayLogo from "../logo/bimbayLogo.js";
 import TextArea from "../input/TextArea";
 import colors from "../colors/colors";
 import Message from "../message/Message";
@@ -34,31 +33,31 @@ export default class CredentialForm extends React.Component {
 
 		if (!this.state.mounted) {
 			return "Loading"
-		}
-		else {
+		} else {
 			let lastFloat = undefined;
 			const inputs = this.props.inputs.map((input, i) => {
 				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, loading, float, width, pattern, maxLength, align, options} = input;
-				if (typeof  mode === 'undefined')
+				if (typeof mode === 'undefined')
 					mode = 'regular';
 				if (type === "text" || type === "password" || type === "number") {
 					return (
-						<InputField
-							color={color}
-							label={label}
-							key={i}
-							id={id}
-							name={id}
-							type={type}
-							onChange={this.props.onChange}
-							hint={hint}
-							handler={triggerOnEnter === true ? handler : undefined}
-							float={float}
-							width={width}
-							pattern={pattern}
-							maxLength={maxLength}
-							align={align}
-						/>
+						<div style={{padding:'0 0 15px 0'}}>
+							<InputField
+								color={color}
+								label={label}
+								key={i}
+								id={id}
+								name={id}
+								type={type}
+								onChange={this.props.onChange}
+								hint={hint}
+								handler={triggerOnEnter === true ? handler : undefined}
+								width={width}
+								pattern={pattern}
+								maxLength={maxLength}
+								align={align}
+							/>
+						</div>
 					);
 				} else if (type === "button") {
 					return (
@@ -74,21 +73,21 @@ export default class CredentialForm extends React.Component {
 							loading={loading}
 						/>
 					);
-				}
-				else if (type === "textarea") {
+				} else if (type === "textarea") {
 					return (
-						<TextArea
-							color={this.props.color}
-							label={label}
-							key={i}
-							id={id}
-							name={id}
-							onChange={this.props.onChange}
-							hint={hint}
-						/>
+						<div style={{padding:'0 0 15px 0'}}>
+							<TextArea
+								color={this.props.color}
+								label={label}
+								key={i}
+								id={id}
+								name={id}
+								onChange={this.props.onChange}
+								hint={hint}
+							/>
+						</div>
 					);
-				}
-				else if (type === "select") {
+				} else if (type === "select") {
 					return <Select options={options} key={i} name={id} id={id} hint={hint}
 								   onChange={this.props.onChange}/>
 				}
@@ -114,7 +113,7 @@ export default class CredentialForm extends React.Component {
 						padding: "30px",
 						borderRadius: "6px",
 						border: "1px solid " + colors.blueGrey["100"],
-						color:colors.grey["700"]
+						color: colors.grey["700"]
 					}}
 				>
 					{title && <h4

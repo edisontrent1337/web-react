@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../../web-react/colors/colors";
+import colors from "../colors/colors";
 
 export default class Select extends React.Component {
 

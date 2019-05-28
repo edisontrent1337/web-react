@@ -11,21 +11,19 @@ export default class TextArea extends React.Component {
 			clicked: false,
 			mounted: false
 		};
-		this.onFocusHandler = this.onFocusHandler.bind(this);
-		this.onFocusOutHandler = this.onFocusOutHandler.bind(this);
 	}
 
-	onFocusHandler() {
+	onFocusHandler = () => {
 		this.setState({
 			clicked: true
 		});
-	}
+	};
 
-	onFocusOutHandler() {
+	onFocusOutHandler = () => {
 		this.setState({
 			clicked: false
 		});
-	}
+	};
 
 	componentDidMount() {
 		this.setState({
@@ -38,7 +36,7 @@ export default class TextArea extends React.Component {
 			return "Loading";
 		}
 		else {
-			const {name, value, id, onChange, hint, clickable, placeholder, handler, label, height, editValidator, loading, showCancelButton, showUpdateButton} = this.props;
+			const {name, value, id, color, onChange, hint, clickable, placeholder, handler, label, height, editValidator, loading, showCancelButton, showUpdateButton} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
 				return (<span key={i}>{elem}</span>);
 			});
@@ -47,7 +45,6 @@ export default class TextArea extends React.Component {
 					{label && <label style={{
 						color: colors.grey["700"],
 						fontSize: "12px",
-						fontWeight: "bold"
 					}}>
 						{label}
 					</label>
@@ -56,18 +53,20 @@ export default class TextArea extends React.Component {
 			}
 			else {
 				return (
-					<div style={{margin: "0px 0px 15px 0px"}}>
+					<div>
 						<label style={{
 							color: "#616161",
 							fontSize: "12px",
-							fontWeight: "bold"
 						}}>
 							{label}
 						</label>
 						<textarea id={id} style={{
-							backgroundColor: (this.state.clicked ? "#FFF" : colors.blueGrey["50"]),
+							backgroundColor: (this.state.clicked ? "#FBFBFB" : colors.blueGrey["50"]),
+							display:'block',
 							height: height ? height : "auto",
-							resize: "none"
+							resize: "none",
+							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + colors.grey['400'])
+
 						}}
 								  onFocus={this.onFocusHandler}
 								  onBlur={clickable === true ? undefined : this.onFocusOutHandler}
@@ -76,7 +75,7 @@ export default class TextArea extends React.Component {
 								  name={name}
 								  defaultValue={placeholder}
 						/>
-						<span style={{fontSize: "12px", color: "#616161"}}>{formattedHint}</span>
+						<div style={{fontSize: "12px", color: "#616161"}}>{formattedHint}</div>
 						{handler &&
 						<div style={{marginTop: "20px"}}>
 							{showUpdateButton && <Button value={"Update"} color={colors.green["600"]} onClick={handler}
