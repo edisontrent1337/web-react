@@ -6,7 +6,7 @@ import colors from "../colors/colors";
 import Message from "../message/Message";
 import Select from "../input/Select";
 
-export default class CredentialForm extends React.Component {
+export default class Form extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
@@ -30,18 +30,21 @@ export default class CredentialForm extends React.Component {
 	}
 
 	render() {
-
+		const {inputs} = this.props;
 		if (!this.state.mounted) {
 			return "Loading"
 		} else {
 			let lastFloat = undefined;
-			const inputs = this.props.inputs.map((input, i) => {
-				let {label, id, type, value, handler, hint, validator, mode, color, triggerOnEnter, loading, float, width, pattern, maxLength, align, options} = input;
+			const inputProps = inputs.map((input, i) => {
+				let {
+					label, id, type, value, handler, hint, validator, mode, color,
+					triggerOnEnter, loading, float, width, pattern, maxLength, align, options
+				} = input;
 				if (typeof mode === 'undefined')
 					mode = 'regular';
 				if (type === "text" || type === "password" || type === "number") {
 					return (
-						<div style={{padding:'0 0 15px 0'}}>
+						<div style={{padding: '0 0 15px 0'}}>
 							<InputField
 								color={color}
 								label={label}
@@ -75,7 +78,7 @@ export default class CredentialForm extends React.Component {
 					);
 				} else if (type === "textarea") {
 					return (
-						<div style={{padding:'0 0 15px 0'}}>
+						<div style={{padding: '0 0 15px 0'}}>
 							<TextArea
 								color={this.props.color}
 								label={label}
@@ -139,7 +142,7 @@ export default class CredentialForm extends React.Component {
 					</div>
 					<div>{this.props.hint && <Message heading={"Attention:"} message={this.props.hint}/>}</div>
 					{this.props.children}
-					{inputs}
+					{inputProps}
 					<div style={{clear: "both"}}></div>
 					{links}
 				</div>
