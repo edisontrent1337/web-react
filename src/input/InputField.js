@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import './inputfield.fx.css';
-import colors from "../colors/colors";
-import Button from "../button/Button";
+import colors from '../colors/colors';
+import Button from '../button/Button';
 
 export default class InputField extends React.Component {
 
@@ -13,8 +13,6 @@ export default class InputField extends React.Component {
 			focused: false,
 			hover: false
 		};
-		this.onFocusHandler = this.onFocusHandler.bind(this);
-		this.onFocusOutHandler = this.onFocusOutHandler.bind(this);
 	}
 
 	componentDidMount() {
@@ -23,7 +21,7 @@ export default class InputField extends React.Component {
 		});
 	}
 
-	onFocusHandler() {
+	onFocusHandler = () => {
 		this.setState({
 			focused: true
 		});
@@ -32,9 +30,9 @@ export default class InputField extends React.Component {
 				clicked: true
 			})
 		}
-	}
+	};
 
-	onFocusOutHandler() {
+	onFocusOutHandler = () => {
 		this.setState({
 			focused: false
 		});
@@ -43,11 +41,11 @@ export default class InputField extends React.Component {
 				clicked: false
 			});
 		}
-	}
+	};
 
 	render() {
 		if (!this.state.mounted) {
-			return "Loading";
+			return 'Loading';
 		} else {
 
 			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width, pattern, maxLength, color, showCancelButton} = this.props;
@@ -55,11 +53,11 @@ export default class InputField extends React.Component {
 				return (<span key={i}>{elem}</span>);
 			});
 			if (clickable && !this.state.clicked) {
-				return <span style={{color: color || colors.grey["700"]}}>
+				return <span style={{color: color || colors.grey['700']}}>
                 {label && <label style={{
-					color: colors.grey["700"],
-					fontSize: "12px",
-					fontWeight: "bold"
+					color: colors.grey['700'],
+					fontSize: '12px',
+					fontWeight: 'bold'
 				}}>
 					{label}
 				</label>
@@ -69,43 +67,43 @@ export default class InputField extends React.Component {
 					 onMouseLeave={() => this.setState({hover: false})}>
                     {placeholder}
 					{this.state.hover && handler &&
-					<i className="far fa-edit" style={{fontSize: "14px", marginLeft: "10px"}}></i>}
+					<i className='far fa-edit' style={{fontSize: '14px', marginLeft: '10px'}}></i>}
                     </h5>
                     </span>;
 			}
 			return (
 				<div style={{
-					marginRight: float === "left" ? "20px" : "0px",
-					width: width + "px",
-					display: "inline-block",
-					paddingRight:'15px',
-					verticalAlign:'top'
+					marginRight: float === 'left' ? '20px' : '0px',
+					width: width + 'px',
+					display: 'inline-block',
+					paddingRight: '15px',
+					verticalAlign: 'top'
 				}}>
 					{label && <label style={{
-						color: colors.grey["700"],
-						fontSize: "12px",
-						display: "block"
+						color: colors.grey['700'],
+						fontSize: '12px',
+						display: 'block',
 					}}>
-						{clickable ? "EDIT " + label : label}
+						{clickable ? 'EDIT ' + label : label}
 					</label>
 					}
 					<div style={{
-						float: (this.state.focused ? "left" : "none"),
-						width: clickable ? "80%" : "auto",
+						float: (this.state.focused ? 'left' : 'none'),
+						width: clickable ? '80%' : 'auto',
 					}}>
 						<input type={type} id={id} style={{
-							backgroundColor: (this.state.focused ? "#FAFAFA" : "#f2f2f2"),
+							backgroundColor: (this.state.focused ? '#FAFAFA' : '#f2f2f2'),
 							textAlign: this.props.align,
-							color: colors.blueGrey["800"],
-							fontSize: "18px",
-							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' +  colors.grey['500'])
+							color: colors.blueGrey['800'],
+							fontSize: '18px',
+							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + colors.grey['500'])
 						}}
 							   onFocus={this.onFocusHandler}
 							   onBlur={this.onFocusOutHandler}
 							   value={value}
 							   onChange={onChange}
 							   onKeyPress={(e) => {
-								   if (e.key === "Enter") {
+								   if (e.key === 'Enter') {
 									   if (handler) {
 										   handler(e);
 									   }
@@ -116,16 +114,16 @@ export default class InputField extends React.Component {
 							   pattern={pattern}
 							   maxLength={maxLength}
 						/>
-						<div style={{fontSize: "12px", color: "#616161"}}>{formattedHint}</div>
+						<div style={{fontSize: '12px', color: '#616161'}}>{formattedHint}</div>
 
 					</div>
 					{this.state.clicked &&
-					showCancelButton && <div style={{marginLeft: "80%", paddingLeft: "20px"}}>
-						<Button value={"Cancel"} color={colors.red["600"]} onClick={this.onFocusOutHandler}/>
+					showCancelButton && <div style={{marginLeft: '80%', paddingLeft: '20px'}}>
+						<Button value={'Cancel'} color={colors.red['600']} onClick={this.onFocusOutHandler}/>
 					</div>}
 
 
-					<div style={{clear: "both"}}></div>
+					<div style={{clear: 'both'}}></div>
 
 				</div>
 			);

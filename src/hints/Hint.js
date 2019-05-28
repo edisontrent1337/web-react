@@ -10,7 +10,7 @@ export default class Hint extends React.Component {
 	}
 
 	render() {
-		const {icon, text, buttonText, buttonColor, heading, callback} = this.props;
+		const {icon, text, buttonText, buttonColor, heading, callback, button} = this.props;
 		return (
 			<div className="hintContainer" style={styles.base}>
 				<h1>
@@ -26,6 +26,7 @@ export default class Hint extends React.Component {
 						{buttonText && <Button value={buttonText}
 											   color={buttonColor || colors.green["800"]}
 											   onClick={callback}/>}
+						{button}
 					</div>
 				</div>
 			</div>
