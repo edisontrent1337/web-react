@@ -55,7 +55,8 @@ export default class Button extends React.Component {
 						transition: "0.2s",
 						display: "block",
 						width: width || (mode === "big" ? "100%" : "auto"),
-						marginRight: "10px"
+						marginRight: "10px",
+						padding:'0'
 					}}
 					onClick={onClick}
 					onMouseLeave={this.leaveHandler}
@@ -66,16 +67,21 @@ export default class Button extends React.Component {
 					<span style={{
 						display: 'inline-block',
 						borderRight: '1px solid ' + (this.state.hovering ? "#FFF" : color),
-						padding: '2px 5px 0 0',
+						padding: '2px 5px 0 5px',
 						fontSize: '1.4em',
 						marginRight: '6px',
 						verticalAlign: 'center',
+						textAlign:'center',
 						float: 'left',
 					}} className={leftIcon}></span>
 					}
 					<span style={{
 						display: 'inline-block',
-						padding: mode === "icon" ? "0" : "7px 10px 5px 10px",
+						paddingTop: "7px",
+						paddingRight: "7px",
+						paddingBottom: "5px",
+						paddingLeft: leftIcon ? 0 : "7px",
+						textAlign: 'right'
 					}}>
 					{loading ? <LoadingIndicator width={32} height={32}/> : value}
 					</span>
@@ -84,9 +90,9 @@ export default class Button extends React.Component {
 					<span style={{
 						display: 'inline-block',
 						borderLeft: '1px solid ' + (this.state.hovering ? "#FFF" : color),
-						padding: '2px 0 0 5px',
+						padding: '2px 5px 0 5px',
+						textAlign:'center',
 						fontSize: '1.4em',
-						marginLeft: '6px',
 						float: 'right',
 					}} className={rightIcon}></span>
 					}
