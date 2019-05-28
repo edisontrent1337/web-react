@@ -10,6 +10,7 @@ export default class InputField extends React.Component {
 		this.state = {
 			clicked: false,
 			mounted: false,
+			focused: false,
 			hover: false
 		};
 		this.onFocusHandler = this.onFocusHandler.bind(this);
@@ -23,6 +24,9 @@ export default class InputField extends React.Component {
 	}
 
 	onFocusHandler() {
+		this.setState({
+			focused: true
+		});
 		if (this.props.handler) {
 			this.setState({
 				clicked: true
@@ -31,6 +35,9 @@ export default class InputField extends React.Component {
 	}
 
 	onFocusOutHandler() {
+		this.setState({
+			focused: false
+		});
 		if (this.props.handler) {
 			this.setState({
 				clicked: false
@@ -41,8 +48,7 @@ export default class InputField extends React.Component {
 	render() {
 		if (!this.state.mounted) {
 			return "Loading";
-		}
-		else {
+		} else {
 
 			const {name, value, type, id, onChange, hint, placeholder, handler, clickable, label, float, width, pattern, maxLength, color, showCancelButton} = this.props;
 			const formattedHint = hint && hint.map((elem, i) => {
@@ -69,31 +75,30 @@ export default class InputField extends React.Component {
 			}
 			return (
 				<div style={{
-					margin: "0px 0px 15px 0px",
-					float: float,
 					marginRight: float === "left" ? "20px" : "0px",
 					width: width + "px",
-					display: "inline-block"
+					display: "inline-block",
+					paddingRight:'15px',
+					verticalAlign:'top'
 				}}>
 					{label && <label style={{
 						color: colors.grey["700"],
 						fontSize: "12px",
-						fontWeight: "bold",
 						display: "block"
 					}}>
-
 						{clickable ? "EDIT " + label : label}
 					</label>
 					}
 					<div style={{
-						float: (this.state.clicked ? "left" : "none"),
+						float: (this.state.focused ? "left" : "none"),
 						width: clickable ? "80%" : "auto",
 					}}>
 						<input type={type} id={id} style={{
-							backgroundColor: (this.state.clicked ? "#FFF" : "#f2f2f2"),
+							backgroundColor: (this.state.focused ? "#FAFAFA" : "#f2f2f2"),
 							textAlign: this.props.align,
 							color: colors.blueGrey["800"],
-							fontSize: "18px"
+							fontSize: "18px",
+							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' +  colors.grey['500'])
 						}}
 							   onFocus={this.onFocusHandler}
 							   onBlur={this.onFocusOutHandler}

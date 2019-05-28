@@ -1,20 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
 textarea:focus, input:focus, select:focus {
     outline: none;
-    border-bottom: 1px solid dodgerblue;
 }
 
 input, textarea, select {
-    border:none;
-    border-bottom: 1px solid #CFD8DC;
-    background-color: #f2f2f2;
-    display: block;
-    width: 100%;
+    border: none;
     margin: 0;
-    padding: 7px 12px 7px 12px;
+    padding: 6px 12px 6px 12px;
     transition: 0.3s;
+    font-size: 12px;
 }
+
 textarea {
-    border:1px solid lightgrey;
+    border: 1px solid lightgrey;
     border-bottom: 1px solid #CFD8DC;
 }
 
@@ -23,6 +24,7 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input:invalid {
     border-bottom: 1px solid red;
 }

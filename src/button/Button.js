@@ -39,7 +39,7 @@ export default class Button extends React.Component {
 			validator = () => true;
 		}
 		return (
-			<div style={{display: "inline-block"}}>
+			<div style={{display: "inline-block", verticalAlign:'top'}}>
 				<button
 					className="button"
 					style={{
@@ -65,14 +65,9 @@ export default class Button extends React.Component {
 				>
 					{loading ? <LoadingIndicator width={32} height={32}/> : value}
 				</button>
-				<span
-					style={{
-						fontSize: "12px",
-						color: "#616161"
-					}}
-				>
-          {formattedHint}
-        </span>
+				<div style={{fontSize: "12px", color: "#616161"}}>
+					{formattedHint}
+				</div>
 			</div>
 		);
 	}
