@@ -28,7 +28,7 @@ export default class Button extends React.Component {
 	}
 
 	render() {
-		const {color, mode, onClick, value, hint, loading, fontSize, width} = this.props;
+		const {color, mode, onClick, value, hint, loading, fontSize, width, leftIcon, rightIcon} = this.props;
 		let validator = this.props.validator;
 		const formattedHint =
 			hint &&
@@ -39,7 +39,7 @@ export default class Button extends React.Component {
 			validator = () => true;
 		}
 		return (
-			<div style={{display: "inline-block", verticalAlign:'top'}}>
+			<div style={{display: "inline-block", verticalAlign: 'top'}}>
 				<button
 					className="button"
 					style={{
@@ -50,7 +50,6 @@ export default class Button extends React.Component {
 							"1px solid " +
 							(this.state.hovering ? "transparent" : this.props.color),
 						color: this.state.hovering ? "#FFF" : color,
-						padding: mode === "icon" ? "0" : "7px 15px 5px 15px",
 						borderRadius: "4px",
 						opacity: loading ? "1.0" : validator ? "0.8" : "0.3",
 						transition: "0.2s",
@@ -63,7 +62,34 @@ export default class Button extends React.Component {
 					onMouseOver={this.hoverHandler}
 					disabled={!validator}
 				>
+					{leftIcon &&
+					<span style={{
+						display: 'inline-block',
+						borderRight: '1px solid ' + (this.state.hovering ? "#FFF" : color),
+						padding: '2px 5px 0 0',
+						fontSize: '1.4em',
+						marginRight: '6px',
+						verticalAlign: 'center',
+						float: 'left',
+					}} className={leftIcon}></span>
+					}
+					<span style={{
+						display: 'inline-block',
+						padding: mode === "icon" ? "0" : "7px 10px 5px 10px",
+					}}>
 					{loading ? <LoadingIndicator width={32} height={32}/> : value}
+					</span>
+
+					{rightIcon &&
+					<span style={{
+						display: 'inline-block',
+						borderLeft: '1px solid ' + (this.state.hovering ? "#FFF" : color),
+						padding: '2px 0 0 5px',
+						fontSize: '1.4em',
+						marginLeft: '6px',
+						float: 'right',
+					}} className={rightIcon}></span>
+					}
 				</button>
 				<div style={{fontSize: "12px", color: "#616161"}}>
 					{formattedHint}
