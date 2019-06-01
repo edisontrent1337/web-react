@@ -1,16 +1,19 @@
 {
   "name": "@edisontrent1337/web-react",
-  "version": "0.2.12",
+  "version": "0.2.19",
   "description": "Provides different React Components for web development.",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "node_modules/babel-cli/bin/babel.js ./src --out-dir lib && npm run copycss",
+    "prepublish": "babel ./src --out-dir lib && npm run copycss",
     "test": "echo \"Error: no test specified\" && exit 1",
     "copycss": "cpx './src/**/*.{css,gif}' lib"
   },
   "babel": {
     "presets": [
-      "react"
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "repository": {
@@ -28,10 +31,10 @@
   },
   "homepage": "https://github.com/edisontrent1337/web-react#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
     "cpx": "^1.5.0"
   }
 }
