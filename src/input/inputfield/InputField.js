@@ -74,9 +74,7 @@ export default class InputField extends React.Component {
 			return (
 				<div style={{
 					marginRight: float === 'left' ? '20px' : '0px',
-					width: width + 'px',
 					display: 'inline-block',
-					paddingRight: '15px',
 					verticalAlign: 'top'
 				}}>
 					{label && <label style={{
@@ -96,6 +94,7 @@ export default class InputField extends React.Component {
 							textAlign: this.props.align,
 							color: materialColor.blueGrey['800'],
 							fontSize: '16px',
+							width: width ? width : '100%',
 							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + materialColor.grey['400'])
 						}}
 							   onFocus={this.onFocusHandler}

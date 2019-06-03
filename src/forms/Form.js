@@ -1,10 +1,10 @@
-import React from "react";
-import InputField from "../input/inputfield/InputField.js";
-import Button from "../button/Button.js";
-import TextArea from "../input/textarea/TextArea";
-import materialColor from "material-colors";
-import Message from "../message/Message";
-import Select from "../input/select/Select";
+import React from 'react';
+import InputField from '../input/inputfield/InputField.js';
+import Button from '../button/Button.js';
+import TextArea from '../input/textarea/TextArea';
+import materialColor from 'material-colors';
+import Message from '../message/Message';
+import Select from '../input/select/Select';
 
 export default class Form extends React.Component {
 	constructor(props) {
@@ -32,17 +32,17 @@ export default class Form extends React.Component {
 	render() {
 		const {inputs} = this.props;
 		if (!this.state.mounted) {
-			return "Loading"
+			return 'Loading'
 		} else {
 			let lastFloat = undefined;
 			const inputProps = inputs.map((input, i) => {
 				let {
 					label, id, type, value, handler, hint, validator, mode, color,
-					triggerOnEnter, loading, float, width, pattern, maxLength, align, options
+					triggerOnEnter, loading, float, width, pattern, maxLength, align, options, showCancelButton
 				} = input;
 				if (typeof mode === 'undefined')
 					mode = 'regular';
-				if (type === "text" || type === "password" || type === "number") {
+				if (type === 'text' || type === 'password' || type === 'number') {
 					return (
 						<div style={{padding: '0 0 15px 0'}}>
 							<InputField
@@ -62,7 +62,7 @@ export default class Form extends React.Component {
 							/>
 						</div>
 					);
-				} else if (type === "button") {
+				} else if (type === 'button') {
 					return (
 
 						<Button
@@ -76,21 +76,23 @@ export default class Form extends React.Component {
 							loading={loading}
 						/>
 					);
-				} else if (type === "textarea") {
+				} else if (type === 'textarea') {
 					return (
 						<div style={{padding: '0 0 15px 0'}}>
 							<TextArea
 								color={this.props.color}
 								label={label}
+								handler={handler}
 								key={i}
 								id={id}
 								name={id}
 								onChange={this.props.onChange}
 								hint={hint}
+								showCancelButton={showCancelButton}
 							/>
 						</div>
 					);
-				} else if (type === "select") {
+				} else if (type === 'select') {
 					return <Select options={options} key={i} name={id} id={id} hint={hint}
 								   onChange={this.props.onChange}/>
 				}
@@ -102,48 +104,48 @@ export default class Form extends React.Component {
 				links = this.props.links.map((link, i) => {
 					return (
 						<div key={i}>
-							<a style={{fontSize: "14px"}} href={link.href}>{link.value}</a>
+							<a style={{fontSize: '14px'}} href={link.href}>{link.value}</a>
 						</div>
 					);
 				});
 			}
 
-			let {title, error, logo} = this.props;
+			let {title, error, logo, hint} = this.props;
 			return (
 				<div
 					style={{
-						backgroundColor: "#FFF",
-						padding: "30px",
-						borderRadius: "6px",
-						border: "1px solid " + materialColor.blueGrey["100"],
-						color: materialColor.grey["700"]
+						backgroundColor: '#FFF',
+						padding: '20px 25px',
+						borderRadius: '6px',
+						border: '1px solid ' + materialColor.blueGrey['100'],
+						color: materialColor.grey['700']
 					}}
 				>
 					{title && <h4
-						className="text-center"
+						className='text-center'
 						style={{
-							color: "#012",
-							fontSize: "30px"
+							color: '#012',
+							fontSize: '30px'
 						}}
 					>
-						<div style={{marginBottom: "20px"}}>
+						{logo && <div style={{marginBottom: '20px'}}>
 							{logo}
-						</div>
+						</div>}
 
 						{title}
 					</h4>
 					}
 					{title && <hr/>}
 
-					<div>
-						{error ? (
-							<Message color={'red'} heading={"An error occurred."} message={error}/>
-						) : null}
+					<div style={{marginBottom: '15px'}}>
+						{error &&
+						<Message color={'red'} heading={'An error occurred.'} message={error}/>
+						}
 					</div>
-					<div>{this.props.hint && <Message heading={"Attention:"} message={this.props.hint}/>}</div>
+					<div>{hint && <Message heading={'Attention:'} message={hint}/>}</div>
 					{this.props.children}
 					{inputProps}
-					<div style={{clear: "both"}}/>
+					<div style={{clear: 'both'}}/>
 					{links}
 				</div>
 			);

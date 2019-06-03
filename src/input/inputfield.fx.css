@@ -6,6 +6,32 @@ textarea:focus, input:focus, select:focus {
     outline: none;
 }
 
+.selector::before {
+    pointer-events: none;
+}
+
+.selector {
+    display: block;
+}
+
+.selector:hover, select:hover {
+    cursor: pointer;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    text-align: left;
+}
+
+option {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: green;
+}
+
 input, textarea, select {
     border: none;
     margin: 0;
@@ -28,3 +54,17 @@ input:invalid {
     border-bottom: 1px solid red;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio:0) {  /*safari and chrome*/
+    select {
+        height:45px;
+    }
+}
+select::-moz-focus-inner { /*Remove button padding in FF*/
+    border: 0;
+    padding: 0;
+}
+@-moz-document url-prefix() { /* targets Firefox only */
+    select {
+        padding: 15px 0!important;
+    }
+}

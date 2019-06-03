@@ -29,7 +29,6 @@ export default class Message extends React.Component {
 						border: '1px solid ' + materialColor[color]['200'],
 						backgroundColor: materialColor[color]['100'],
 						color: materialColor[color]['900'],
-						margin: '10px',
 						borderRadius: '6px',
 						width: width ? width : 'auto'
 					}}>
