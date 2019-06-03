@@ -1,10 +1,10 @@
 import React from "react";
-import InputField from "../input/InputField.js";
+import InputField from "../input/inputfield/InputField.js";
 import Button from "../button/Button.js";
-import TextArea from "../input/TextArea";
+import TextArea from "../input/textarea/TextArea";
 import colors from "../colors/colors";
 import Message from "../message/Message";
-import Select from "../input/Select";
+import Select from "../input/select/Select";
 
 export default class Form extends React.Component {
 	constructor(props) {

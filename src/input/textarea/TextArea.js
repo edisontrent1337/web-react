@@ -1,7 +1,7 @@
 import React from "react";
-import './inputfield.fx.css';
-import colors from "../colors/colors";
-import Button from "../button/Button";
+import '../inputfield.fx.css';
+import colors from "../../colors/colors";
+import Button from "../../button/Button";
 
 export default class TextArea extends React.Component {
 
@@ -62,7 +62,7 @@ export default class TextArea extends React.Component {
 						</label>
 						<textarea id={id} style={{
 							backgroundColor: (this.state.clicked ? "#FBFBFB" : colors.blueGrey["50"]),
-							display:'block',
+							display: 'block',
 							height: height ? height : "auto",
 							resize: "none",
 							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + colors.grey['400'])
@@ -79,8 +79,9 @@ export default class TextArea extends React.Component {
 						{handler &&
 						<div style={{marginTop: "20px"}}>
 							{showUpdateButton && <Button value={"Update"} color={colors.green["600"]} onClick={handler}
-									validator={editValidator} loading={loading}/>}
-							{showCancelButton && <Button value={"Cancel"} color={colors.red["600"]} onClick={this.onFocusOutHandler}/>}
+														 validator={editValidator} loading={loading}/>}
+							{showCancelButton &&
+							<Button value={"Cancel"} color={colors.red["600"]} onClick={this.onFocusOutHandler}/>}
 						</div>
 						}
 					</div>

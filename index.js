@@ -1,12 +1,13 @@
 import Button from './lib/button';
-import InputField from './lib/input';
+import InputField from './lib/input/inputfield';
 import Form from './lib/forms';
 import Hint from './lib/hints';
 import Message from './lib/message';
-import Select from './lib/input';
-import TextArea from './lib/input';
+import Select from './lib/input/select';
+import TextArea from './lib/input/textarea';
 import Circle from './lib/circle';
-import LoadingIndicator from '/lib/indicators';
+import LoadingIndicator from './lib/indicators';
+
 export {
 	Button,
 	InputField,

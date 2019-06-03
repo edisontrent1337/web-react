@@ -1,7 +1,7 @@
 import React from 'react';
-import './inputfield.fx.css';
-import colors from '../colors/colors';
-import Button from '../button/Button';
+import '../inputfield.fx.css';
+import colors from '../../colors/colors';
+import Button from '../../button/Button';
 
 export default class InputField extends React.Component {
 
@@ -67,7 +67,7 @@ export default class InputField extends React.Component {
 					 onMouseLeave={() => this.setState({hover: false})}>
                     {placeholder}
 					{this.state.hover && handler &&
-					<i className='far fa-edit' style={{fontSize: '14px', marginLeft: '10px'}}></i>}
+					<i className='far fa-edit' style={{fontSize: '14px', marginLeft: '10px'}}/>}
                     </h5>
                     </span>;
 			}
@@ -123,7 +123,7 @@ export default class InputField extends React.Component {
 					</div>}
 
 
-					<div style={{clear: 'both'}}></div>
+					<div style={{clear: 'both'}}/>
 
 				</div>
 			);

@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../colors/colors";
+import colors from "../../colors/colors";
 
 export default class Select extends React.Component {
 
@@ -8,7 +8,7 @@ export default class Select extends React.Component {
 	}
 
 	render() {
-		const {label, options, onChange, id, hint,selectedOption} = this.props;
+		const {label, options, onChange, id, hint, selectedOption} = this.props;
 		const formattedHint =
 			hint &&
 			hint.map((elem, i) => {
@@ -24,7 +24,8 @@ export default class Select extends React.Component {
 					{label}
 				</label>
 
-				<select name={id} id={id} onChange={onChange} defaultValue={selectedOption} style={{padding:"20px", color: colors.blueGrey["800"]}}>
+				<select name={id} id={id} onChange={onChange} defaultValue={selectedOption}
+						style={{padding: "20px", color: colors.blueGrey["800"]}}>
 					{options.map((option, i) => {
 						return <option key={i} value={option.toLowerCase()}>{option}</option>
 					})}
