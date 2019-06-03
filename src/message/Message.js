@@ -1,5 +1,5 @@
 import React from "react";
-import colors from '../colors/colors.js';
+import materialColor from "material-colors";
 
 export default class Message extends React.Component {
 
@@ -26,9 +26,9 @@ export default class Message extends React.Component {
 				<div
 					style={{
 						padding: '10px 15px',
-						border: '1px solid ' + colors[color]['200'],
-						backgroundColor: colors[color]['100'],
-						color: colors[color]['900'],
+						border: '1px solid ' + materialColor[color]['200'],
+						backgroundColor: materialColor[color]['100'],
+						color: materialColor[color]['900'],
 						margin: '10px',
 						borderRadius: '6px',
 						width: width ? width : 'auto'

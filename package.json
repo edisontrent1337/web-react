@@ -1,6 +1,6 @@
 {
   "name": "@edisontrent1337/web-react",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "Provides different React Components for web development.",
   "main": "lib/index.js",
   "scripts": {
@@ -36,5 +36,8 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "cpx": "^1.5.0"
+  },
+  "dependencies": {
+    "material-colors": "^1.2.6"
   }
 }

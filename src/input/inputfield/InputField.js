@@ -1,6 +1,6 @@
 import React from 'react';
 import '../inputfield.fx.css';
-import colors from '../../colors/colors';
+import materialColor from "material-colors";
 import Button from '../../button/Button';
 
 export default class InputField extends React.Component {
@@ -53,9 +53,9 @@ export default class InputField extends React.Component {
 				return (<span key={i}>{elem}</span>);
 			});
 			if (clickable && !this.state.clicked) {
-				return <span style={{color: color || colors.grey['700']}}>
+				return <span style={{color: color || materialColor.grey['700']}}>
                 {label && <label style={{
-					color: colors.grey['700'],
+					color: materialColor.grey['700'],
 					fontSize: '12px',
 					fontWeight: 'bold'
 				}}>
@@ -80,7 +80,7 @@ export default class InputField extends React.Component {
 					verticalAlign: 'top'
 				}}>
 					{label && <label style={{
-						color: colors.grey['700'],
+						color: materialColor.grey['700'],
 						fontSize: '12px',
 						display: 'block',
 					}}>
@@ -92,7 +92,7 @@ export default class InputField extends React.Component {
 						width: clickable ? '80%' : 'auto',
 					}}>
 						<input type={type} id={id} style={{
-							backgroundColor: (this.state.focused ? '#FAFAFA' : colors.blueGrey["50"]),
+							backgroundColor: (this.state.focused ? '#FAFAFA' : materialColor.blueGrey["50"]),
 							textAlign: this.props.align,
 							color: colors.blueGrey['800'],
 							fontSize: '16px',
@@ -119,7 +119,7 @@ export default class InputField extends React.Component {
 					</div>
 					{this.state.clicked &&
 					showCancelButton && <div style={{marginLeft: '80%', paddingLeft: '20px'}}>
-						<Button value={'Cancel'} color={colors.red['600']} onClick={this.onFocusOutHandler}/>
+						<Button value={'Cancel'} color={materialColor.red['600']} onClick={this.onFocusOutHandler}/>
 					</div>}
 
 

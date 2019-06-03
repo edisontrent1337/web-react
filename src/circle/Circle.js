@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../colors/colors";
+import materialColor from "material-colors";
 
 export default class Circle extends React.Component {
 
@@ -24,7 +24,7 @@ export default class Circle extends React.Component {
                 color: color["400"],
                 textDecoration: "none",
                 fontSize: fontSize ? fontSize : "24px",
-                border: "1px solid " + colors.grey["50"],
+                border: "1px solid " + materialColor.grey["50"],
             }}>
                 <div style={{
                     textAlign: "center",

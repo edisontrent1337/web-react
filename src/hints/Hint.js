@@ -1,7 +1,7 @@
 import React from "react";
 import "./hint.fx.css";
 import Button from "../button/Button";
-import colors from "../colors/colors";
+import materialColor from "material-colors";
 
 export default class Hint extends React.Component {
 
@@ -24,7 +24,7 @@ export default class Hint extends React.Component {
 				<div style={{textAlign: "center"}}>
 					<div style={{display: "inline-block"}}>
 						{buttonText && <Button value={buttonText}
-											   color={buttonColor || colors.green["800"]}
+											   color={buttonColor || materialColor.green["800"]}
 											   onClick={callback}/>}
 						{button}
 					</div>
@@ -37,8 +37,8 @@ export default class Hint extends React.Component {
 
 const styles = {
 	base: {
-		backgroundColor: colors.blueGrey["50"],
-		color: colors.grey["800"],
+		backgroundColor: materialColor.blueGrey["50"],
+		color: materialColor.grey["800"],
 		padding: "25px",
 		borderRadius: "8px",
 		marginTop: "50px",

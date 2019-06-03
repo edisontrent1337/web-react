@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../colors/colors";
+import materialColor from "material-colors";
 
 export default class Tab extends React.Component {
 

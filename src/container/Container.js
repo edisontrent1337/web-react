@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../colors/colors";
+import materialColor from "material-colors";
 
 export default class Container extends React.Component {
 
@@ -8,7 +8,7 @@ export default class Container extends React.Component {
 			<div style={{
 				padding: "20px",
 				marginBottom: "30px",
-				border: "1px solid " + colors.blueGrey["50"],
+				border: "1px solid " + materialColor.blueGrey["50"],
 				borderRadius: "8px",
 				width: "100%",
 				minHeight: this.props.minHeight + "px",

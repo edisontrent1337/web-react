@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../../colors/colors";
+import materialColor from "material-colors";
 
 export default class Select extends React.Component {
 
@@ -25,7 +25,7 @@ export default class Select extends React.Component {
 				</label>
 
 				<select name={id} id={id} onChange={onChange} defaultValue={selectedOption}
-						style={{padding: "20px", color: colors.blueGrey["800"]}}>
+						style={{padding: "20px", color: materialColor.blueGrey["800"]}}>
 					{options.map((option, i) => {
 						return <option key={i} value={option.toLowerCase()}>{option}</option>
 					})}

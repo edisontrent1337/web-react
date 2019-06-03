@@ -1,6 +1,6 @@
 import React from "react";
 import '../inputfield.fx.css';
-import colors from "../../colors/colors";
+import materialColor from "material-colors";
 import Button from "../../button/Button";
 
 export default class TextArea extends React.Component {
@@ -43,7 +43,7 @@ export default class TextArea extends React.Component {
 			if (clickable && !this.state.clicked) {
 				return <span>
 					{label && <label style={{
-						color: colors.grey["700"],
+						color: materialColor.grey["700"],
 						fontSize: "12px",
 					}}>
 						{label}
@@ -65,7 +65,7 @@ export default class TextArea extends React.Component {
 							display: 'block',
 							height: height ? height : "auto",
 							resize: "none",
-							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + colors.grey['400'])
+							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + materialColor.grey['400'])
 
 						}}
 								  onFocus={this.onFocusHandler}
@@ -78,10 +78,10 @@ export default class TextArea extends React.Component {
 						<div style={{fontSize: "12px", color: "#616161"}}>{formattedHint}</div>
 						{handler &&
 						<div style={{marginTop: "20px"}}>
-							{showUpdateButton && <Button value={"Update"} color={colors.green["600"]} onClick={handler}
+							{showUpdateButton && <Button value={"Update"} color={materialColor.green["600"]} onClick={handler}
 														 validator={editValidator} loading={loading}/>}
 							{showCancelButton &&
-							<Button value={"Cancel"} color={colors.red["600"]} onClick={this.onFocusOutHandler}/>}
+							<Button value={"Cancel"} color={materialColor.red["600"]} onClick={this.onFocusOutHandler}/>}
 						</div>
 						}
 					</div>

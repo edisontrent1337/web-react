@@ -2,7 +2,7 @@ import React from "react";
 import InputField from "../input/inputfield/InputField.js";
 import Button from "../button/Button.js";
 import TextArea from "../input/textarea/TextArea";
-import colors from "../colors/colors";
+import materialColor from "material-colors";
 import Message from "../message/Message";
 import Select from "../input/select/Select";
 
@@ -115,8 +115,8 @@ export default class Form extends React.Component {
 						backgroundColor: "#FFF",
 						padding: "30px",
 						borderRadius: "6px",
-						border: "1px solid " + colors.blueGrey["100"],
-						color: colors.grey["700"]
+						border: "1px solid " + materialColor.blueGrey["100"],
+						color: materialColor.grey["700"]
 					}}
 				>
 					{title && <h4
@@ -137,13 +137,13 @@ export default class Form extends React.Component {
 
 					<div>
 						{error ? (
-							<Message bsStyle="danger" heading={"An error occurred."} message={error}/>
+							<Message color={'red'} heading={"An error occurred."} message={error}/>
 						) : null}
 					</div>
 					<div>{this.props.hint && <Message heading={"Attention:"} message={this.props.hint}/>}</div>
 					{this.props.children}
 					{inputProps}
-					<div style={{clear: "both"}}></div>
+					<div style={{clear: "both"}}/>
 					{links}
 				</div>
 			);

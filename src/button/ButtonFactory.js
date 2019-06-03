@@ -1,5 +1,5 @@
 import Button from "./Button";
-import colors from "../colors/colors";
+import materialColor from "material-colors";
 import React from "react";
 
 export function createDeleteButton(handleDelete) {
@@ -7,7 +7,7 @@ export function createDeleteButton(handleDelete) {
 		width={"120px"}
 		value={<span>
 			<i className={"typcn typcn-trash"}></i>Delete</span>}
-		color={colors.red["600"]}
+		color={materialColor.red["600"]}
 		onClick={handleDelete}
 	/>
 }
