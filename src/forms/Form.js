@@ -44,11 +44,11 @@ export default class Form extends React.Component {
 					mode = 'regular';
 				if (type === 'text' || type === 'password' || type === 'number') {
 					return (
-						<div style={{padding: '0 0 15px 0'}}>
+						<div style={{padding: '0 0 15px 0'}} key={i}
+						>
 							<InputField
 								color={color}
 								label={label}
-								key={i}
 								id={id}
 								name={id}
 								type={type}
@@ -78,12 +78,11 @@ export default class Form extends React.Component {
 					);
 				} else if (type === 'textarea') {
 					return (
-						<div style={{padding: '0 0 15px 0'}}>
+						<div style={{padding: '0 0 15px 0'}} key={i}>
 							<TextArea
 								color={this.props.color}
 								label={label}
 								handler={handler}
-								key={i}
 								id={id}
 								name={id}
 								onChange={this.props.onChange}
@@ -139,7 +138,8 @@ export default class Form extends React.Component {
 
 					<div style={{marginBottom: '15px'}}>
 						{error &&
-						<Message color={'red'} heading={'An error occurred.'} message={error}/>
+						<Message color={'red'} heading={'An error occurred.'} message={error}
+								 icon={'mdi mdi-alert-outline'} dismissIcon={'mdi mdi-close-circle-outline'}/>
 						}
 					</div>
 					<div>{hint && <Message heading={'Attention:'} message={hint}/>}</div>

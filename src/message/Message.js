@@ -1,5 +1,6 @@
 import React from "react";
 import materialColor from "material-colors";
+import './message.fx.css';
 
 export default class Message extends React.Component {
 
@@ -7,61 +8,68 @@ export default class Message extends React.Component {
 		super(props, context);
 		this.state = {
 			show: true,
-			hover: false
+			fadedOut: false,
+			hover: false,
+			fadeProgress: 0
 		};
 	}
 
 	handleDismiss = () => {
-		this.setState({show: false});
+		this.setState({show: false, fade: setInterval(this.fadeOut, 100)});
+
 	};
 
-	handleShow = () => {
-		this.setState({show: true});
+	fadeOut = () => {
+		this.setState({
+			fadeProgress: Math.min(1, this.state.fadeProgress + 0.25)
+		});
 	};
+
+	componentWillUnmount() {
+		clearInterval(this.state.fade);
+	}
 
 	render() {
-		if (this.state.show) {
-			const {message, dismissIcon, icon, heading, color, width} = this.props;
-			return (
-				<div
-					style={{
-						padding: '10px 15px',
-						border: '1px solid ' + materialColor[color]['200'],
-						backgroundColor: materialColor[color]['100'],
-						color: materialColor[color]['900'],
-						borderRadius: '6px',
-						width: width ? width : 'auto'
-					}}>
-					<div style={{fontWeight: "bold"}}>
+		const {message, dismissIcon, icon, heading, color, width} = this.props;
+		return (
+			<div
+				className={'message'}
+				style={{
+					padding: '10px 15px',
+					border: '1px solid ' + materialColor[color]['200'],
+					backgroundColor: materialColor[color]['100'],
+					color: materialColor[color]['900'],
+					borderRadius: '6px',
+					width: width ? width : 'auto',
+					opacity: 1 - this.state.fadeProgress,
+					display: this.state.fadeProgress === 1 ? 'none' : 'block'
+				}}>
+				<div style={{fontWeight: "bold"}}>
 
-						<div style={{display: 'table'}}>
-							{icon &&
-							<div
-								style={{display: 'table-cell', paddingRight: '8px', fontSize: '1.4em'}}
-								className={icon}/>}
-							<div style={{display: 'table-cell', width: '100%'}}>{heading}</div>
-							{dismissIcon &&
-							<a onMouseEnter={() => {
-								this.setState({hover: true})
-							}} onMouseLeave={() => {
-								this.setState({hover: false})
-							}} onClick={this.handleDismiss} style={{
-								display: 'table-cell',
-								fontSize: '1.4em',
-								cursor: this.state.hover ? 'pointer' : 'default'
-							}}
-							   className={dismissIcon}/>}
-						</div>
-					</div>
-					<div>
-						{message}
+					<div style={{display: 'table'}}>
+						{icon &&
+						<div
+							style={{display: 'table-cell', paddingRight: '8px', fontSize: '1.4em'}}
+							className={icon}/>}
+						<div style={{display: 'table-cell', width: '100%'}}>{heading}</div>
+						{dismissIcon &&
+						<a onMouseEnter={() => {
+							this.setState({hover: true})
+						}} onMouseLeave={() => {
+							this.setState({hover: false})
+						}} onClick={this.handleDismiss} style={{
+							display: 'table-cell',
+							fontSize: '1.4em',
+							cursor: this.state.hover ? 'pointer' : 'default'
+						}}
+						   className={dismissIcon}/>}
 					</div>
 				</div>
-			);
-		}
-		else {
-			return <span/>;
-		}
+				<div>
+					{message}
+				</div>
+			</div>
+		);
 	}
 
 }
