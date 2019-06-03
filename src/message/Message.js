@@ -10,13 +10,24 @@ export default class Message extends React.Component {
 			show: true,
 			fadedOut: false,
 			hover: false,
-			fadeProgress: 0
+			fadeProgress: 0,
+			message: props.message,
+			fadeOutInterval: undefined,
 		};
 	}
 
-	handleDismiss = () => {
-		this.setState({show: false, fade: setInterval(this.fadeOut, 100)});
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.message !== this.props.message) {
+			clearInterval(this.state.fadeOutInterval);
+			this.setState({
+				show: true,
+				fadeProgress: 0,
+			})
+		}
+	}
 
+	handleDismiss = () => {
+		this.setState({show: false, fadeOutInterval: setInterval(this.fadeOut, 100)});
 	};
 
 	fadeOut = () => {

@@ -138,7 +138,7 @@ export default class Form extends React.Component {
 
 					<div style={{marginBottom: '15px'}}>
 						{error &&
-						<Message color={'red'} heading={'An error occurred.'} message={error}
+						<Message color={'red'} heading={'An error occurred: '} message={error}
 								 icon={'mdi mdi-alert-outline'} dismissIcon={'mdi mdi-close-circle-outline'}/>
 						}
 					</div>
