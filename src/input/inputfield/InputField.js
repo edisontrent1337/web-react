@@ -94,9 +94,9 @@ export default class InputField extends React.Component {
 						<input type={type} id={id} style={{
 							backgroundColor: (this.state.focused ? '#FAFAFA' : materialColor.blueGrey["50"]),
 							textAlign: this.props.align,
-							color: colors.blueGrey['800'],
+							color: materialColor.blueGrey['800'],
 							fontSize: '16px',
-							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + colors.grey['400'])
+							borderBottom: (this.state.focused ? '1px solid ' + (color ? color : 'dodgerblue') : '1px solid ' + materialColor.grey['400'])
 						}}
 							   onFocus={this.onFocusHandler}
 							   onBlur={this.onFocusOutHandler}

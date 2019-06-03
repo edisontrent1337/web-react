@@ -61,7 +61,7 @@ export default class TextArea extends React.Component {
 							{label}
 						</label>
 						<textarea id={id} style={{
-							backgroundColor: (this.state.clicked ? "#FBFBFB" : colors.blueGrey["50"]),
+							backgroundColor: (this.state.clicked ? "#FBFBFB" : materialColor.blueGrey["50"]),
 							display: 'block',
 							height: height ? height : "auto",
 							resize: "none",
