@@ -4,9 +4,10 @@
   "description": "Provides different React Components for web development.",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "babel ./src --out-dir lib && npm run copycss",
+    "prepublish": "babel ./src --out-dir lib && npm run copy-css && npm run copy-type-definitions",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copycss": "cpx './src/**/*.{css,gif}' lib"
+    "copy-css": "cpx './src/**/*.{css,gif}' lib",
+    "copy-type-definitions": "cpx './src/**/*.d.ts' lib"
   },
   "babel": {
     "presets": [
