@@ -13,7 +13,8 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-transform-modules-commonjs"
     ]
   },
   "repository": {
@@ -31,11 +32,12 @@
   },
   "homepage": "https://github.com/edisontrent1337/web-react#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "cpx": "^1.5.0"
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "7.4.4",
+    "@babel/preset-react": "7.0.0",
+    "cpx": "1.5.0"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
