@@ -4,16 +4,18 @@
   "description": "Provides different React Components for web development.",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "babel ./src --out-dir lib && npm run copycss",
+    "prepublish": "babel ./src --out-dir lib && npm run copy-css && npm run copy-type-definitions",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copycss": "cpx './src/**/*.{css,gif}' lib"
+    "copy-css": "cpx './src/**/*.{css,gif}' lib",
+    "copy-type-definitions": "cpx './src/**/*.d.ts' lib"
   },
   "babel": {
     "presets": [
       "@babel/preset-react"
     ],
     "plugins": [
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-transform-modules-commonjs"
     ]
   },
   "repository": {
@@ -31,11 +33,12 @@
   },
   "homepage": "https://github.com/edisontrent1337/web-react#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "cpx": "^1.5.0"
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "7.4.4",
+    "@babel/preset-react": "7.0.0",
+    "cpx": "1.5.0"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",

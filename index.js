@@ -1,14 +1,16 @@
-import Button from './lib/button';
-import InputField from './lib/input/inputfield';
-import Form from './lib/forms';
-import Hint from './lib/hints';
-import Message from './lib/message';
-import Select from './lib/input/select';
-import TextArea from './lib/input/textarea';
-import Circle from './lib/circle';
-import LoadingIndicator from './lib/indicators';
+'use strict';
 
-export {
+const Button = require('./lib/button');
+const InputField = require('./lib/input/inputfield');
+const Form = require('./lib/forms');
+const Hint = require('./lib/hints');
+const Message = require('./lib/message');
+const Select = require('./lib/input/select');
+const TextArea = require('./lib/input/textarea');
+const Circle = require('./lib/circle');
+const LoadingIndicator = require('./lib/indicators');
+
+module.exports = {
 	Button,
 	InputField,
 	Form,
@@ -18,4 +20,4 @@ export {
 	TextArea,
 	Circle,
 	LoadingIndicator
-}
+};
