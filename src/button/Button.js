@@ -48,10 +48,10 @@ export default class Button extends React.Component {
 						backgroundColor: loading ? "white" : this.state.hovering ? color : "transparent",
 						border:
 							"1px solid " +
-							(this.state.hovering ? "transparent" : this.props.color),
+							(this.state.hovering ? "transparent" : color),
 						color: this.state.hovering ? "#FFF" : color,
 						borderRadius: "4px",
-						opacity: loading ? "1.0" : validator ? "0.8" : "0.3",
+						opacity: loading ? "1.0" : validator() ? "0.8" : "0.3",
 						transition: "0.2s",
 						display: "block",
 						width: width || (mode === "big" ? "100%" : "auto"),
@@ -61,7 +61,7 @@ export default class Button extends React.Component {
 					onClick={onClick}
 					onMouseLeave={this.leaveHandler}
 					onMouseOver={this.hoverHandler}
-					disabled={!validator}
+					disabled={!validator()}
 				>
 					{leftIcon &&
 					<span style={{
