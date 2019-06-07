@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as materialColor from 'material-colors';
 import './message.fx.css';
 
+// FIXME hmueller: find correct types
 type MessageProps = {
     message?: any;
     dismissIcon?: any;
@@ -11,6 +12,7 @@ type MessageProps = {
     width?: any;
 };
 
+// FIXME hmueller: find correct types
 type MessageState = {
     show: any;
     fadedOut: boolean;

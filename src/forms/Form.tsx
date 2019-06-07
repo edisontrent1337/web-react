@@ -9,6 +9,7 @@ import Select from '../input/select/Select';
 
 type OnChangeCallback = () => void;
 
+// FIXME hmueller: find correct types
 type FormInput = {
     label?: any;
     id?: any;
@@ -45,6 +46,7 @@ type FormState = {
     mounted: boolean;
     error: undefined | string;
 };
+
 export default class Form extends React.Component<FormProps, FormState> {
     constructor(props: FormProps) {
         super(props);
