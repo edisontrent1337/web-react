@@ -2,16 +2,14 @@ import * as React from 'react';
 import Tab from './Tab';
 import './tab.fx.css';
 
-// FIXME hmueller: find correct types
 type TabBarProps = {
-    titles?: any;
+    titles: string[];
     switchCallback?: any;
 };
 
-// FIXME hmueller: find correct types
 type TabBarState = {
-    titles?: any;
-    clickedTab?: any;
+    titles: string[];
+    clickedTab: number;
 };
 
 export default class TabBar extends React.Component<TabBarProps, TabBarState> {
@@ -26,8 +24,7 @@ export default class TabBar extends React.Component<TabBarProps, TabBarState> {
     render() {
         return (
             <div className={'tabBar'}>
-                {this.props.titles.map((title: any, i: number) => {
-                    // FIXME hmueller: find correct type for 'title'
+                {this.props.titles.map((title: string, i: number) => {
                     return (
                         <span
                             onClick={() => {

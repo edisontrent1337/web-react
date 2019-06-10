@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as materialColor from 'material-colors';
 
-// FIXME hmueller: find correct types
 type TabProps = {
-    title?: any;
-    url?: any;
-    active?: any;
+    title?: string;
+    url?: string;
+    active?: boolean;
 };
 
 export default class Tab extends React.Component<TabProps> {

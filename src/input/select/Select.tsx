@@ -2,17 +2,17 @@ import * as React from 'react';
 import * as materialColor from 'material-colors';
 import '../inputfield.fx.css';
 
-// FIXME hmueller: find correct types for all these and determine whether they should be optional or not.
 type SelectProps = {
-    name?: any;
-    label?: any;
-    color?: any;
-    options?: any;
-    onChange?: any;
-    id?: any;
-    hint?: any;
-    selectedOption?: any;
+    name: string;
+    label?: string;
+    color?: string;
+    options: string[];
+    onChange?: () => void;
+    id?: string;
+    hint?: string;
+    selectedOption?: string;
 };
+
 type SelectState = {
     focused: boolean;
 };
@@ -35,7 +35,6 @@ export default class Select extends React.Component<SelectProps, SelectState> {
         this.setState({
             focused: false
         });
-        console.log('OUT');
     };
 
     render() {
@@ -48,14 +47,9 @@ export default class Select extends React.Component<SelectProps, SelectState> {
             hint,
             selectedOption
         } = this.props;
-        const formattedHint =
-            hint &&
-            // FIXME hmueller: find correct type for 'elem'
-            hint.map((elem: any, i: number) => {
-                return <span key={i}> {elem} </span>;
-            });
+        const formattedHint = hint && <span> {hint} </span>;
         return (
-            <div style={{ margin: '0px 0px 15px 0px' }}>
+            <div style={{margin: '0px 0px 15px 0px'}}>
                 <label
                     style={{
                         color: '#616161',
@@ -94,8 +88,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             fontSize: '16px'
                         }}
                     >
-                        {options.map((option: any, i: number) => {
-                            // FIXME hmueller: find correct type for 'option'
+                        {options.map((option: string, i: number) => {
                             return (
                                 <option
                                     onClick={this.onFocusOutHandler}
@@ -107,7 +100,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             );
                         })}
                     </select>
-                    <div style={{ display: 'table-cell' }} />
+                    <div style={{display: 'table-cell'}}/>
                 </div>
                 <span
                     style={{

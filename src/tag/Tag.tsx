@@ -1,24 +1,23 @@
 import * as React from 'react';
 
-// FIXME hmueller: find correct types
 type TagProps = {
-    padding?: any;
-    fontSize?: any;
-    color?: any;
-    tag?: any;
+    padding?: string | number;
+    fontSize?: string | number;
+    color?: string;
+    tag?: string | JSX.Element;
 };
 
 export default class Tag extends React.Component<TagProps> {
     render() {
-        const { padding, fontSize, color, tag } = this.props;
+        const {padding, fontSize, color, tag} = this.props;
         return (
             <span
                 style={{
                     border: '1px solid ' + color,
                     borderRadius: '10px',
                     color: color,
-                    fontSize: fontSize || '10px',
-                    padding: padding || '5px',
+                    fontSize: (typeof fontSize === 'string' ? fontSize : (typeof fontSize === 'undefined' ? '10px' : fontSize)),
+                    padding: (typeof padding === 'string' ? padding : (typeof padding === 'undefined' ? '5px' : padding)),
                     fontWeight: 'normal'
                 }}
             >

@@ -3,21 +3,17 @@ import './hint.fx.css';
 import Button from '../button/Button';
 import * as materialColor from 'material-colors';
 
-// FIXME hmueller: find correct types
 type HintProps = {
-    icon?: any;
-    text?: any;
-    buttonText?: any;
-    buttonColor?: any;
-    heading?: any;
+    icon?: string;
+    text?: string | JSX.Element;
+    buttonText?: string;
+    buttonColor?: string;
+    heading?: string;
     callback?: any;
-    button?: any;
+    button?: Button;
 };
 
 export default class Hint extends React.Component<HintProps> {
-    constructor(props: HintProps) {
-        super(props);
-    }
 
     render() {
         const {
@@ -32,15 +28,15 @@ export default class Hint extends React.Component<HintProps> {
         return (
             <div className="hintContainer" style={styles.base}>
                 <h1>
-                    <i className={icon} />
+                    <i className={icon}/>
                 </h1>
                 <h2>{heading}</h2>
                 <div>
                     <p>{text}</p>
                     {this.props.children}
                 </div>
-                <div style={{ textAlign: 'center' }}>
-                    <div style={{ display: 'inline-block' }}>
+                <div style={{textAlign: 'center'}}>
+                    <div style={{display: 'inline-block'}}>
                         {buttonText && (
                             <Button
                                 value={buttonText}

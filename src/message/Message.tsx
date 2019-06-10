@@ -2,34 +2,28 @@ import * as React from 'react';
 import * as materialColor from 'material-colors';
 import './message.fx.css';
 
-// FIXME hmueller: find correct types
 type MessageProps = {
-    message?: any;
-    dismissIcon?: any;
-    icon?: any;
-    heading?: any;
-    color?: any;
-    width?: any;
+    message?: string | JSX.Element;
+    dismissIcon?: string;
+    icon?: string;
+    heading?: string;
+    color: string;
+    width?: string | number;
 };
 
-// FIXME hmueller: find correct types
 type MessageState = {
-    show: any;
+    show: boolean;
     fadedOut: boolean;
     hover: boolean;
     fadeProgress: number;
-    message: any;
-    fadeOutInterval: any;
+    message?: string | JSX.Element;
+    fadeOutInterval?: NodeJS.Timeout;
     fade?: any;
 };
 
-export default class Message extends React.Component<
-    MessageProps,
-    MessageState
-> {
-    // FIXME hmueller: find correct type for 'context'
-    constructor(props: MessageState, context: any) {
-        super(props, context);
+export default class Message extends React.Component<MessageProps, MessageState> {
+    constructor(props: MessageProps) {
+        super(props);
         this.state = {
             show: true,
             fadedOut: false,
@@ -42,7 +36,8 @@ export default class Message extends React.Component<
 
     componentDidUpdate(prevProps: MessageProps, prevState: MessageState) {
         if (prevProps.message !== this.props.message) {
-            clearInterval(this.state.fadeOutInterval);
+            if (this.state.fadeOutInterval)
+                clearInterval(this.state.fadeOutInterval);
             this.setState({
                 show: true,
                 fadeProgress: 0
@@ -76,6 +71,7 @@ export default class Message extends React.Component<
             color,
             width
         } = this.props;
+
         return (
             <div
                 className={'message'}
@@ -85,13 +81,13 @@ export default class Message extends React.Component<
                     backgroundColor: (materialColor as any)[color]['100'] as any,
                     color: (materialColor as any)[color]['900'],
                     borderRadius: '6px',
-                    width: width ? width : 'auto',
+                    width: typeof width === 'number' ? width + 'px' : (typeof width === 'undefined' ? 'auto' : width),
                     opacity: 1 - this.state.fadeProgress,
                     display: this.state.fadeProgress === 1 ? 'none' : 'block'
                 }}
             >
-                <div style={{ fontWeight: 'bold' }}>
-                    <div style={{ display: 'table' }}>
+                <div style={{fontWeight: 'bold'}}>
+                    <div style={{display: 'table'}}>
                         {icon && (
                             <div
                                 style={{
@@ -102,16 +98,16 @@ export default class Message extends React.Component<
                                 className={icon}
                             />
                         )}
-                        <div style={{ display: 'table-cell', width: '100%' }}>
+                        <div style={{display: 'table-cell', width: '100%'}}>
                             {heading}
                         </div>
                         {dismissIcon && (
                             <a
                                 onMouseEnter={() => {
-                                    this.setState({ hover: true });
+                                    this.setState({hover: true});
                                 }}
                                 onMouseLeave={() => {
-                                    this.setState({ hover: false });
+                                    this.setState({hover: false});
                                 }}
                                 onClick={this.handleDismiss}
                                 style={{

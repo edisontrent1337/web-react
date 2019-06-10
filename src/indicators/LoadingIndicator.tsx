@@ -3,19 +3,21 @@ import * as React from 'react';
 const loading = require('./loading.gif');
 
 type LoadingIndicatorProps = {
-  width: number;
-  height: number;
+  width: number | string;
+  height: number| string;
 };
 
 export default class LoadingIndicator extends React.Component<
   LoadingIndicatorProps
 > {
   render() {
-    return (
+      const width = this.props.width;
+      const height = this.props.height;
+      return (
       <div
         style={{
-          width: this.props.width + 'px',
-          height: this.props.height + 'px',
+          width: (typeof width === "number" ? width  + 'px' : width),
+          height: (typeof height === "number" ? height  + 'px' : height),
           margin: '0px auto',
           opacity: 0.66
         }}

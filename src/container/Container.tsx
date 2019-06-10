@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as materialColor from 'material-colors';
 
-// FIXME hmueller: find correct types
 type ContainerProps = {
-    height?: any;
-    minHeight?: any;
+    height?: number;
+    minHeight?: number;
 };
 
 export default class Container extends React.Component<ContainerProps> {

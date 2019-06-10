@@ -3,24 +3,23 @@ import '../inputfield.fx.css';
 import * as materialColor from 'material-colors';
 import Button from '../../button/Button';
 
-// FIXME hmueller: find correct types for all these and determine whether they should be optional or not.
 type TextAreaProps = {
-    name?: any;
-    value?: any;
-    id?: any;
-    color?: any;
-    onChange?: any;
-    hint?: any;
-    clickable?: any;
-    width?: any;
-    placeholder?: any;
-    handler?: any;
-    label?: any;
-    height?: any;
+    name?: string;
+    value?: string;
+    id?: string;
+    color?: string;
+    onChange?: () => void;
+    hint?: string;
+    clickable?: boolean;
+    width?: string | number;
+    placeholder?: string;
+    handler?: () => void;
+    label?: string;
+    height?: string | number;
     editValidator?: any;
-    loading?: any;
-    showCancelButton?: any;
-    showUpdateButton?: any;
+    loading?: boolean;
+    showCancelButton?: boolean;
+    showUpdateButton?: boolean;
 };
 
 type TextAreaState = {
@@ -28,10 +27,8 @@ type TextAreaState = {
     mounted: boolean;
 };
 
-export default class TextArea extends React.Component<
-    TextAreaProps,
-    TextAreaState
-> {
+export default class TextArea extends React.Component<TextAreaProps,
+    TextAreaState> {
     constructor(props: TextAreaProps) {
         super(props);
         this.state = {
@@ -80,12 +77,7 @@ export default class TextArea extends React.Component<
                 showCancelButton,
                 showUpdateButton
             } = this.props;
-            const formattedHint =
-				hint &&
-				// FIXME hmueller: find correct type for 'elem'
-                hint.map((elem:any, i: number) => {
-                    return <span key={i}>{elem}</span>;
-                });
+            const formattedHint = hint && <span>{hint}</span>;
             if (clickable && !this.state.clicked) {
                 return (
                     <span>
@@ -129,7 +121,7 @@ export default class TextArea extends React.Component<
                                 resize: 'none',
                                 borderBottom: this.state.clicked
                                     ? '1px solid ' +
-                                      (color ? color : 'dodgerblue')
+                                    (color ? color : 'dodgerblue')
                                     : '1px solid ' + materialColor.grey['400'],
                                 width: width ? width : '100%'
                             }}
@@ -144,17 +136,17 @@ export default class TextArea extends React.Component<
                             name={name}
                             defaultValue={placeholder}
                         />
-                        <div style={{ fontSize: '12px', color: '#616161' }}>
+                        <div style={{fontSize: '12px', color: '#616161'}}>
                             {formattedHint}
                         </div>
                         {handler && (
-                            <div style={{ marginTop: '20px' }}>
+                            <div style={{marginTop: '20px'}}>
                                 {showUpdateButton && (
                                     <Button
                                         value={'Update'}
                                         color={materialColor.green['600']}
                                         onClick={handler}
-                                        validator={editValidator}
+                                        active={editValidator}
                                         loading={loading}
                                     />
                                 )}

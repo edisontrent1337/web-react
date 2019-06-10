@@ -1,45 +1,50 @@
 import * as React from 'react';
 import * as materialColor from 'material-colors';
 
-import InputField from '../input/inputfield/InputField.js';
-import Button from '../button/Button.js';
+import InputField from '../input/inputfield/InputField';
+import Button from '../button/Button';
 import TextArea from '../input/textarea/TextArea';
 import Message from '../message/Message';
 import Select from '../input/select/Select';
 
-type OnChangeCallback = () => void;
+export class Link {
+    href: string;
+    title: string;
+    constructor(href: string, title: string) {
+        this.href = href;
+        this.title = title;
+    }
+}
 
-// FIXME hmueller: find correct types
 type FormInput = {
-    label?: any;
-    id?: any;
-    type: any;
-    value?: any;
-    handler?: any;
-    hint?: any;
-    validator?: any;
-    mode?: any;
-    color?: any;
-    triggerOnEnter?: any;
-    loading?: any;
-    float?: any;
-    width?: any;
-    pattern?: any;
-    maxLength?: any;
+    label?: string;
+    id: string;
+    type: string;
+    value?: string | JSX.Element;
+    handler?: () => void;
+    hint?: string;
+    mode?: string;
+    color?: string;
+    triggerOnEnter?: boolean;
+    loading?: boolean;
+    float?: string;
+    width?: string | number;
+    pattern?: string;
+    maxLength?: number;
     align?: any;
     options?: any;
-    showCancelButton?: any;
+    showCancelButton?: boolean;
+    active?: boolean;
 };
 
 type FormProps = {
     inputs: FormInput[];
-    onChange: any;
-    color?: any;
-    links?: any;
-    title?: any;
-    error?: any;
-    logo?: any;
-    hint?: any;
+    onChange: () => void;
+    color?: string;
+    links?: Link[];
+    title?: string | JSX.Element;
+    error?: string | JSX.Element;
+    logo?: JSX.Element;
 };
 
 type FormState = {
@@ -56,22 +61,12 @@ export default class Form extends React.Component<FormProps, FormState> {
         };
     }
 
-    // FIXME hmueller: find the correct type for 'event'
-    handleChange = (event: any) => {
-        this.setState({
-            // FIXME hmueller: find the correct type for '[event.target.name]'
-            [event.target.name as any]: event.target.value,
-            error: undefined,
-            mounted: this.state.mounted
-        });
-    };
-
     componentDidMount() {
-        this.setState({ mounted: true });
+        this.setState({mounted: true});
     }
 
     render() {
-        const { inputs } = this.props;
+        const {inputs} = this.props;
         if (!this.state.mounted) {
             return 'Loading';
         } else {
@@ -83,8 +78,8 @@ export default class Form extends React.Component<FormProps, FormState> {
                     type,
                     value,
                     handler,
+                    active,
                     hint,
-                    validator,
                     mode,
                     color,
                     triggerOnEnter,
@@ -95,16 +90,20 @@ export default class Form extends React.Component<FormProps, FormState> {
                     maxLength,
                     align,
                     options,
-                    showCancelButton
+                    showCancelButton,
                 } = input;
-                if (typeof mode === 'undefined') mode = 'regular';
+
+                if (typeof mode === 'undefined') {
+                    mode = 'regular'
+                }
+
                 if (
                     type === 'text' ||
                     type === 'password' ||
                     type === 'number'
                 ) {
                     return (
-                        <div style={{ padding: '0 0 15px 0' }} key={i}>
+                        <div style={{padding: '0 0 15px 0'}} key={i}>
                             <InputField
                                 color={color}
                                 label={label}
@@ -134,13 +133,13 @@ export default class Form extends React.Component<FormProps, FormState> {
                             key={i}
                             value={value}
                             hint={hint}
-                            validator={validator}
+                            active={active}
                             loading={loading}
                         />
                     );
                 } else if (type === 'textarea') {
                     return (
-                        <div style={{ padding: '0 0 15px 0' }} key={i}>
+                        <div style={{padding: '0 0 15px 0'}} key={i}>
                             <TextArea
                                 color={this.props.color}
                                 label={label}
@@ -168,21 +167,20 @@ export default class Form extends React.Component<FormProps, FormState> {
                 lastFloat = float;
             });
 
-            let links = '';
+            let links = undefined;
             if (typeof this.props.links !== 'undefined') {
-                links = this.props.links.map((link: any, i: number) => {
-                    // FIXME hmueller: find correct type for 'link'
+                links = this.props.links.map((link: Link, i: number) => {
                     return (
                         <div key={i}>
-                            <a style={{ fontSize: '14px' }} href={link.href}>
-                                {link.value}
+                            <a style={{fontSize: '14px'}} href={link.href}>
+                                {link.title}
                             </a>
                         </div>
                     );
                 });
             }
 
-            let { title, error, logo, hint } = this.props;
+            let {title, error, logo} = this.props;
             return (
                 <div
                     style={{
@@ -202,7 +200,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                             }}
                         >
                             {logo && (
-                                <div style={{ marginBottom: '20px' }}>
+                                <div style={{marginBottom: '20px'}}>
                                     {logo}
                                 </div>
                             )}
@@ -210,9 +208,9 @@ export default class Form extends React.Component<FormProps, FormState> {
                             {title}
                         </h4>
                     )}
-                    {title && <hr />}
+                    {title && <hr/>}
 
-                    <div style={{ marginBottom: '15px' }}>
+                    <div style={{marginBottom: '15px'}}>
                         {error && (
                             <Message
                                 color={'red'}
@@ -223,14 +221,9 @@ export default class Form extends React.Component<FormProps, FormState> {
                             />
                         )}
                     </div>
-                    <div>
-                        {hint && (
-                            <Message heading={'Attention:'} message={hint} />
-                        )}
-                    </div>
                     {this.props.children}
                     {inputProps}
-                    <div style={{ clear: 'both' }} />
+                    <div style={{clear: 'both'}}/>
                     {links}
                 </div>
             );

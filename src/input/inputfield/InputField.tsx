@@ -3,46 +3,42 @@ import '../inputfield.fx.css';
 import * as materialColor from 'material-colors';
 import Button from '../../button/Button';
 
-// FIXME hmueller: find correct types for these
 type InputFieldProps = {
-    name?: any;
-    value?: any;
-    type?: any;
-    id?: any;
+    name?: string;
+    value?: string;
+    type?: string;
+    id?: string;
     onChange?: any;
-    hint?: any;
-    placeholder?: any;
+    hint?: string;
+    placeholder?: string;
     handler?: any;
-    clickable?: any;
-    label?: any;
-    float?: any;
-    width?: any;
+    clickable?: boolean;
+    label?: string;
+    float?: number | string;
+    width?: number | string;
     pattern?: any;
-    maxLength?: any;
-    color?: any;
-    showCancelButton?: any;
+    maxLength?: number;
+    color?: string;
+    showCancelButton?: boolean;
     align?: any;
 };
 
-// FIXME hmueller: find correct types for these
 type InputFieldState = {
     clicked: boolean;
     mounted: boolean;
     focused: boolean;
-    hover: boolean;
+    hovering: boolean;
 };
 
-export default class InputField extends React.Component<
-    InputFieldProps,
-    InputFieldState
-> {
+export default class InputField extends React.Component<InputFieldProps,
+    InputFieldState> {
     constructor(props: InputFieldProps) {
         super(props);
         this.state = {
             clicked: false,
             mounted: false,
             focused: false,
-            hover: false
+            hovering: false
         };
     }
 
@@ -97,15 +93,10 @@ export default class InputField extends React.Component<
                 showCancelButton,
                 align
             } = this.props;
-            const formattedHint =
-                hint &&
-                // FIXME hmueller: find correct types for 'elem'
-                hint.map((elem: any, i: number) => {
-                    return <span key={i}>{elem}</span>;
-                });
+            const formattedHint = hint && <span>{hint}</span>;
             if (clickable && !this.state.clicked) {
                 return (
-                    <span style={{ color: color || materialColor.grey['700'] }}>
+                    <span style={{color: color || materialColor.grey['700']}}>
                         {label && (
                             <label
                                 style={{
@@ -120,11 +111,11 @@ export default class InputField extends React.Component<
                         <h5
                             onClick={this.onFocusHandler}
                             onBlur={this.onFocusOutHandler}
-                            onMouseOver={() => this.setState({ hover: true })}
-                            onMouseLeave={() => this.setState({ hover: false })}
+                            onMouseOver={() => this.setState({hovering: true})}
+                            onMouseLeave={() => this.setState({hovering: false})}
                         >
                             {placeholder}
-                            {this.state.hover && handler && (
+                            {this.state.hovering && handler && (
                                 <i
                                     className="far fa-edit"
                                     style={{
@@ -175,7 +166,7 @@ export default class InputField extends React.Component<
                                 width: width ? width : '100%',
                                 borderBottom: this.state.focused
                                     ? '1px solid ' +
-                                      (color ? color : 'dodgerblue')
+                                    (color ? color : 'dodgerblue')
                                     : '1px solid ' + materialColor.grey['400']
                             }}
                             onFocus={this.onFocusHandler}
@@ -194,12 +185,12 @@ export default class InputField extends React.Component<
                             pattern={pattern}
                             maxLength={maxLength}
                         />
-                        <div style={{ fontSize: '12px', color: '#616161' }}>
+                        <div style={{fontSize: '12px', color: '#616161'}}>
                             {formattedHint}
                         </div>
                     </div>
                     {this.state.clicked && showCancelButton && (
-                        <div style={{ marginLeft: '80%', paddingLeft: '20px' }}>
+                        <div style={{marginLeft: '80%', paddingLeft: '20px'}}>
                             <Button
                                 value={'Cancel'}
                                 color={materialColor.red['600']}
@@ -208,7 +199,7 @@ export default class InputField extends React.Component<
                         </div>
                     )}
 
-                    <div style={{ clear: 'both' }} />
+                    <div style={{clear: 'both'}}/>
                 </div>
             );
         }
