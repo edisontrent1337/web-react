@@ -1,7 +1,12 @@
 import * as React from 'react';
 import * as materialColor from 'material-colors';
 
-type CircleProps = { title: string; url?: string; color: string; fontSize?: any };
+type CircleProps = {
+    title: string;
+    url?: string;
+    color: string;
+    fontSize?: any;
+};
 
 export default class Circle extends React.Component<CircleProps> {
     constructor(props: CircleProps) {
@@ -13,10 +18,10 @@ export default class Circle extends React.Component<CircleProps> {
     }
 
     render() {
-        let {title, url, color, fontSize} = this.props;
+        let { title, url, color, fontSize } = this.props;
 
-        let convertedColor = materialColor[color];
-        if (typeof convertedColor === 'undefined') {
+        let convertedColor = (materialColor as any)[color];
+        if (convertedColor === undefined) {
             convertedColor = materialColor['blueGrey'];
         }
         return (
