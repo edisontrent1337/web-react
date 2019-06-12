@@ -81,7 +81,7 @@ export default class Message extends React.Component<MessageProps, MessageState>
                     backgroundColor: (materialColor as any)[color]['100'] as any,
                     color: (materialColor as any)[color]['900'],
                     borderRadius: '6px',
-                    width: typeof width === 'number' ? width + 'px' : (typeof width === 'undefined' ? 'auto' : width),
+                    width: typeof width === 'number' ? width + 'px' : (width === undefined ? 'auto' : width),
                     opacity: 1 - this.state.fadeProgress,
                     display: this.state.fadeProgress === 1 ? 'none' : 'block'
                 }}

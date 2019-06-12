@@ -16,8 +16,8 @@ export default class Tag extends React.Component<TagProps> {
                     border: '1px solid ' + color,
                     borderRadius: '10px',
                     color: color,
-                    fontSize: (typeof fontSize === 'string' ? fontSize : (typeof fontSize === 'undefined' ? '10px' : fontSize)),
-                    padding: (typeof padding === 'string' ? padding : (typeof padding === 'undefined' ? '5px' : padding)),
+                    fontSize: (typeof fontSize === 'string' ? fontSize : (fontSize === undefined ? '10px' : fontSize)),
+                    padding: (typeof padding === 'string' ? padding : (padding === undefined ? '5px' : padding)),
                     fontWeight: 'normal'
                 }}
             >

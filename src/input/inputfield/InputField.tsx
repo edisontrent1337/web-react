@@ -8,12 +8,12 @@ type InputFieldProps = {
     value?: string;
     type?: string;
     id?: string;
-    onChange?: any;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     hint?: string;
     placeholder?: string;
-    handler?: any;
+    onEnterPress?: any;
     clickable?: boolean;
-    label?: string;
+    label?: string | JSX.Element;
     float?: number | string;
     width?: number | string;
     pattern?: any;
@@ -30,8 +30,10 @@ type InputFieldState = {
     hovering: boolean;
 };
 
-export default class InputField extends React.Component<InputFieldProps,
-    InputFieldState> {
+export default class InputField extends React.Component<
+    InputFieldProps,
+    InputFieldState
+> {
     constructor(props: InputFieldProps) {
         super(props);
         this.state = {
@@ -52,7 +54,7 @@ export default class InputField extends React.Component<InputFieldProps,
         this.setState({
             focused: true
         });
-        if (this.props.handler) {
+        if (this.props.onEnterPress) {
             this.setState({
                 clicked: true
             });
@@ -63,7 +65,7 @@ export default class InputField extends React.Component<InputFieldProps,
         this.setState({
             focused: false
         });
-        if (this.props.handler) {
+        if (this.props.onEnterPress) {
             this.setState({
                 clicked: false
             });
@@ -82,7 +84,7 @@ export default class InputField extends React.Component<InputFieldProps,
                 onChange,
                 hint,
                 placeholder,
-                handler,
+                onEnterPress: onEnterPress,
                 clickable,
                 label,
                 float,
@@ -96,7 +98,7 @@ export default class InputField extends React.Component<InputFieldProps,
             const formattedHint = hint && <span>{hint}</span>;
             if (clickable && !this.state.clicked) {
                 return (
-                    <span style={{color: color || materialColor.grey['700']}}>
+                    <span style={{ color: color || materialColor.grey['700'] }}>
                         {label && (
                             <label
                                 style={{
@@ -111,11 +113,15 @@ export default class InputField extends React.Component<InputFieldProps,
                         <h5
                             onClick={this.onFocusHandler}
                             onBlur={this.onFocusOutHandler}
-                            onMouseOver={() => this.setState({hovering: true})}
-                            onMouseLeave={() => this.setState({hovering: false})}
+                            onMouseOver={() =>
+                                this.setState({ hovering: true })
+                            }
+                            onMouseLeave={() =>
+                                this.setState({ hovering: false })
+                            }
                         >
                             {placeholder}
-                            {this.state.hovering && handler && (
+                            {this.state.hovering && onEnterPress && (
                                 <i
                                     className="far fa-edit"
                                     style={{
@@ -166,7 +172,7 @@ export default class InputField extends React.Component<InputFieldProps,
                                 width: width ? width : '100%',
                                 borderBottom: this.state.focused
                                     ? '1px solid ' +
-                                    (color ? color : 'dodgerblue')
+                                      (color ? color : 'dodgerblue')
                                     : '1px solid ' + materialColor.grey['400']
                             }}
                             onFocus={this.onFocusHandler}
@@ -175,8 +181,8 @@ export default class InputField extends React.Component<InputFieldProps,
                             onChange={onChange}
                             onKeyPress={e => {
                                 if (e.key === 'Enter') {
-                                    if (handler) {
-                                        handler(e);
+                                    if (onEnterPress) {
+                                        onEnterPress(e);
                                     }
                                 }
                             }}
@@ -185,12 +191,12 @@ export default class InputField extends React.Component<InputFieldProps,
                             pattern={pattern}
                             maxLength={maxLength}
                         />
-                        <div style={{fontSize: '12px', color: '#616161'}}>
+                        <div style={{ fontSize: '12px', color: '#616161' }}>
                             {formattedHint}
                         </div>
                     </div>
                     {this.state.clicked && showCancelButton && (
-                        <div style={{marginLeft: '80%', paddingLeft: '20px'}}>
+                        <div style={{ marginLeft: '80%', paddingLeft: '20px' }}>
                             <Button
                                 value={'Cancel'}
                                 color={materialColor.red['600']}
@@ -199,7 +205,7 @@ export default class InputField extends React.Component<InputFieldProps,
                         </div>
                     )}
 
-                    <div style={{clear: 'both'}}/>
+                    <div style={{ clear: 'both' }} />
                 </div>
             );
         }

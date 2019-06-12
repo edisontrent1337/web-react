@@ -8,12 +8,12 @@ type TextAreaProps = {
     value?: string;
     id?: string;
     color?: string;
-    onChange?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     hint?: string;
     clickable?: boolean;
     width?: string | number;
     placeholder?: string;
-    handler?: () => void;
+    onUpdateClick?: () => void;
     label?: string;
     height?: string | number;
     editValidator?: any;
@@ -69,7 +69,7 @@ export default class TextArea extends React.Component<TextAreaProps,
                 clickable,
                 width,
                 placeholder,
-                handler,
+                onUpdateClick,
                 label,
                 height,
                 editValidator,
@@ -139,13 +139,13 @@ export default class TextArea extends React.Component<TextAreaProps,
                         <div style={{fontSize: '12px', color: '#616161'}}>
                             {formattedHint}
                         </div>
-                        {handler && (
+                        {onUpdateClick && (
                             <div style={{marginTop: '20px'}}>
                                 {showUpdateButton && (
                                     <Button
                                         value={'Update'}
                                         color={materialColor.green['600']}
-                                        onClick={handler}
+                                        onClick={onUpdateClick}
                                         active={editValidator}
                                         loading={loading}
                                     />

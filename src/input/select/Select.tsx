@@ -7,7 +7,7 @@ type SelectProps = {
     label?: string;
     color?: string;
     options: string[];
-    onChange?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     id?: string;
     hint?: string;
     selectedOption?: string;
@@ -49,7 +49,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
         } = this.props;
         const formattedHint = hint && <span> {hint} </span>;
         return (
-            <div style={{margin: '0px 0px 15px 0px'}}>
+            <div style={{ margin: '0px 0px 15px 0px' }}>
                 <label
                     style={{
                         color: '#616161',
@@ -100,7 +100,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             );
                         })}
                     </select>
-                    <div style={{display: 'table-cell'}}/>
+                    <div style={{ display: 'table-cell' }} />
                 </div>
                 <span
                     style={{
