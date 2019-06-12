@@ -1,9 +1,0 @@
-export { default as Button } from './lib/button';
-export { default as InputField } from './lib/input/inputfield';
-export { default as Form } from './lib/forms';
-export { default as Hint } from './lib/hints';
-export { default as Message } from './lib/message';
-export { default as Select } from './lib/input/select';
-export { default as TextArea } from './lib/input/textarea';
-export { default as Circle } from './lib/circle';
-export { default as LoadingIndicator } from './lib/indicators';
