@@ -157,7 +157,7 @@ export default class InputField extends React.Component<
                     <div
                         style={{
                             float: this.state.focused ? 'left' : 'none',
-                            width: clickable ? '80%' : 'auto'
+                            width: clickable ? '80%' : width
                         }}
                     >
                         <input
