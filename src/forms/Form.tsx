@@ -16,7 +16,10 @@ export class Link {
     }
 }
 
-type OnChangeCallback = (input?: string) => void;
+type ChangeEvent = React.ChangeEvent<
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+>;
+type OnChangeCallback = (event?: ChangeEvent) => void;
 
 type FormInput = {
     label?: string;
@@ -47,7 +50,7 @@ type FormProps = {
     title?: string | JSX.Element;
     error?: string | JSX.Element;
     logo?: JSX.Element;
-    onChange?: (event: any) => void;
+    onChange?: OnChangeCallback;
 };
 
 type FormState = {
@@ -68,7 +71,11 @@ export default class Form extends React.Component<FormProps, FormState> {
         this.setState({ mounted: true });
     }
 
-    renderInput = (input: FormInput, i: number) => {
+    renderInput = (
+        input: FormInput,
+        i: number,
+        externalOnChange?: OnChangeCallback
+    ) => {
         let {
             label,
             id,
@@ -94,6 +101,15 @@ export default class Form extends React.Component<FormProps, FormState> {
             mode = 'regular';
         }
 
+        const finalOnChange = (event: ChangeEvent) => {
+            if (onChange) {
+                onChange(event);
+            }
+            if (externalOnChange) {
+                externalOnChange(event);
+            }
+        };
+
         if (type === 'text' || type === 'password' || type === 'number') {
             return (
                 <div style={{ padding: '0 0 15px 0' }} key={i}>
@@ -103,7 +119,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                         id={id}
                         name={id}
                         type={type}
-                        onChange={safeOnChange(onChange)}
+                        onChange={finalOnChange}
                         hint={hint}
                         onEnterPress={
                             triggerOnEnter === true
@@ -139,7 +155,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                         onUpdateClick={onClickOrEnterPress}
                         id={id}
                         name={id}
-                        onChange={safeOnChange(onChange)}
+                        onChange={finalOnChange}
                         hint={hint}
                         showCancelButton={showCancelButton}
                     />
@@ -153,14 +169,14 @@ export default class Form extends React.Component<FormProps, FormState> {
                     name={id}
                     id={id}
                     hint={hint}
-                    onChange={safeOnChange(onChange)}
+                    onChange={finalOnChange}
                 />
             );
         }
     };
 
     render() {
-        const { inputs } = this.props;
+        const { inputs, onChange } = this.props;
         if (!this.state.mounted) {
             return 'Loading';
         } else {
@@ -170,7 +186,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                     lastFloat = input.float;
                     return input;
                 })
-                .map(this.renderInput);
+                .map((input, i) => this.renderInput(input, i, onChange));
 
             let links = undefined;
             if (this.props.links !== undefined) {
@@ -234,14 +250,4 @@ export default class Form extends React.Component<FormProps, FormState> {
             );
         }
     }
-}
-
-function safeOnChange<
-    T extends HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
->(onChange?: OnChangeCallback) {
-    return (event: React.ChangeEvent<T>) => {
-        if (onChange) {
-            onChange(event.target.value);
-        }
-    };
 }
