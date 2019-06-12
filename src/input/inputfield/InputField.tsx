@@ -140,7 +140,7 @@ export default class InputField extends React.Component<
                         marginRight: float === 'left' ? '20px' : '0px',
                         display: 'inline-block',
                         verticalAlign: 'top',
-						width: {width}
+						width: width
                     }}
                 >
                     {label && (
