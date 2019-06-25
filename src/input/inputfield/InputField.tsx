@@ -9,6 +9,8 @@ type InputFieldProps = {
     type?: string;
     id?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     hint?: string;
     placeholder?: string;
     onEnterPress?: any;
@@ -72,6 +74,13 @@ export default class InputField extends React.Component<
         }
     };
 
+    onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+        this.onFocusHandler();
+        if (this.props.onBlur) {
+            this.props.onBlur(event);
+        }
+    };
+
     render() {
         if (!this.state.mounted) {
             return 'Loading';
@@ -112,7 +121,8 @@ export default class InputField extends React.Component<
                         )}
                         <h5
                             onClick={this.onFocusHandler}
-                            onBlur={this.onFocusOutHandler}
+                            onBlur={this.onBlur}
+                            onFocus={this.props.onFocus}
                             onMouseOver={() =>
                                 this.setState({ hovering: true })
                             }
@@ -140,7 +150,7 @@ export default class InputField extends React.Component<
                         marginRight: float === 'left' ? '20px' : '0px',
                         display: 'inline-block',
                         verticalAlign: 'top',
-						width: width ? width : '100%',
+                        width: width ? width : '100%'
                     }}
                 >
                     {label && (
@@ -157,7 +167,7 @@ export default class InputField extends React.Component<
                     <div
                         style={{
                             float: this.state.focused ? 'left' : 'none',
-                            width: clickable ? '80%' : (width ? width : '100%')
+                            width: clickable ? '80%' : width ? width : '100%'
                         }}
                     >
                         <input
