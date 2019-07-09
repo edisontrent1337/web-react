@@ -10,15 +10,14 @@ import Select from '../input/select/Select';
 export class Link {
     href: string;
     title: string;
+
     constructor(href: string, title: string) {
         this.href = href;
         this.title = title;
     }
 }
 
-type ChangeEvent = React.ChangeEvent<
-    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
->;
+type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 type OnChangeCallback = (event?: ChangeEvent) => void;
 
 type FormInput = {
@@ -68,14 +67,10 @@ export default class Form extends React.Component<FormProps, FormState> {
     }
 
     componentDidMount() {
-        this.setState({ mounted: true });
+        this.setState({mounted: true});
     }
 
-    renderInput = (
-        input: FormInput,
-        i: number,
-        externalOnChange?: OnChangeCallback
-    ) => {
+    renderInput = (input: FormInput, i: number, externalOnChange?: OnChangeCallback) => {
         let {
             label,
             id,
@@ -112,7 +107,7 @@ export default class Form extends React.Component<FormProps, FormState> {
 
         if (type === 'text' || type === 'password' || type === 'number') {
             return (
-                <div style={{ padding: '0 0 15px 0' }} key={i}>
+                <div style={{padding: '0 0 15px 0'}} key={i}>
                     <InputField
                         color={color}
                         label={label}
@@ -148,7 +143,7 @@ export default class Form extends React.Component<FormProps, FormState> {
             );
         } else if (type === 'textarea') {
             return (
-                <div style={{ padding: '0 0 15px 0' }} key={i}>
+                <div style={{padding: '0 0 15px 0'}} key={i}>
                     <TextArea
                         color={this.props.color}
                         label={label}
@@ -176,13 +171,12 @@ export default class Form extends React.Component<FormProps, FormState> {
     };
 
     render() {
-        const { inputs, onChange } = this.props;
+        const {inputs, onChange} = this.props;
         if (!this.state.mounted) {
             return 'Loading';
         } else {
             let lastFloat = undefined;
-            const inputProps = inputs
-                .map((input, i) => {
+            const inputProps = inputs.map((input) => {
                     lastFloat = input.float;
                     return input;
                 })
@@ -193,7 +187,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                 links = this.props.links.map((link: Link, i: number) => {
                     return (
                         <div key={i}>
-                            <a style={{ fontSize: '14px' }} href={link.href}>
+                            <a style={{fontSize: '14px'}} href={link.href}>
                                 {link.title}
                             </a>
                         </div>
@@ -201,7 +195,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                 });
             }
 
-            let { title, error, logo } = this.props;
+            let {title, error, logo} = this.props;
             return (
                 <div
                     style={{
@@ -221,7 +215,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                             }}
                         >
                             {logo && (
-                                <div style={{ marginBottom: '20px' }}>
+                                <div style={{marginBottom: '20px'}}>
                                     {logo}
                                 </div>
                             )}
@@ -229,9 +223,9 @@ export default class Form extends React.Component<FormProps, FormState> {
                             {title}
                         </h4>
                     )}
-                    {title && <hr />}
+                    {title && <hr/>}
 
-                    <div style={{ marginBottom: '15px' }}>
+                    <div style={{marginBottom: '15px'}}>
                         {error && (
                             <Message
                                 color={'red'}
@@ -244,7 +238,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                     </div>
                     {this.props.children}
                     {inputProps}
-                    <div style={{ clear: 'both' }} />
+                    <div style={{clear: 'both'}}/>
                     {links}
                 </div>
             );

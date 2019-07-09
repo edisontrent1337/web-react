@@ -7,6 +7,7 @@ import Select from './src/input/select';
 import TextArea from './src/input/textarea';
 import Circle from './src/circle';
 import LoadingIndicator from './src/indicators';
+import Tag from './src/tag'
 // import Table from './src/table';
 import { Tab, TabBar } from './src/tab';
 import Container from './src/container';
@@ -24,5 +25,6 @@ export {
     // Table,
     Tab,
     TabBar,
-    Container
+    Container,
+    Tag
 };

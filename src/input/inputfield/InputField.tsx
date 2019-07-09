@@ -32,10 +32,7 @@ type InputFieldState = {
     hovering: boolean;
 };
 
-export default class InputField extends React.Component<
-    InputFieldProps,
-    InputFieldState
-> {
+export default class InputField extends React.Component<InputFieldProps, InputFieldState> {
     constructor(props: InputFieldProps) {
         super(props);
         this.state = {
@@ -117,7 +114,7 @@ export default class InputField extends React.Component<
 
         if (clickable && !this.state.clicked) {
             return (
-                <span style={{ color: color || materialColor.grey['700'] }}>
+                <span style={{color: color || materialColor.grey['700']}}>
                     {label && (
                         <label
                             style={{
@@ -133,8 +130,8 @@ export default class InputField extends React.Component<
                         onClick={this.onFocusHandler}
                         onBlur={this.onBlur}
                         onFocus={this.props.onFocus}
-                        onMouseOver={() => this.setState({ hovering: true })}
-                        onMouseLeave={() => this.setState({ hovering: false })}
+                        onMouseOver={() => this.setState({hovering: true})}
+                        onMouseLeave={() => this.setState({hovering: false})}
                     >
                         {placeholder}
                         {this.state.hovering && onEnterPress && (
@@ -207,12 +204,12 @@ export default class InputField extends React.Component<
                         pattern={pattern}
                         maxLength={maxLength}
                     />
-                    <div style={{ fontSize: '12px', color: '#616161' }}>
+                    <div style={{fontSize: '12px', color: '#616161'}}>
                         {formattedHint}
                     </div>
                 </div>
                 {this.state.clicked && showCancelButton && (
-                    <div style={{ marginLeft: '80%', paddingLeft: '20px' }}>
+                    <div style={{marginLeft: '80%', paddingLeft: '20px'}}>
                         <Button
                             value={'Cancel'}
                             color={materialColor.red['600']}
@@ -221,7 +218,7 @@ export default class InputField extends React.Component<
                     </div>
                 )}
 
-                <div style={{ clear: 'both' }} />
+                <div style={{clear: 'both'}}/>
             </div>
         );
     }
