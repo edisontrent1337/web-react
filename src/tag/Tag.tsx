@@ -4,7 +4,7 @@ type TagProps = {
     padding?: string | number;
     fontSize?: string | number;
     color?: string;
-    tag?: string | JSX.Element;
+    tag?: string | number | JSX.Element;
 };
 
 export default class Tag extends React.Component<TagProps> {
