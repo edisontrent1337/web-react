@@ -5,7 +5,7 @@ import Button from '../../button/Button';
 
 type InputFieldProps = {
     name?: string;
-    value?: string;
+    value?: string | number;
     type?: string;
     id?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
