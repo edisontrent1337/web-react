@@ -1,10 +1,8 @@
 import Button from './src/button';
 import Form from './src/forms';
-import InputField from './src/input/inputfield';
+import {InputField, Select, TextArea} from "./src/input";
 import Hint from './src/hints/Hint';
 import Message from './src/message/Message';
-import Select from './src/input/select';
-import TextArea from './src/input/textarea';
 import Circle from './src/circle';
 import LoadingIndicator from './src/indicators';
 import Tag from './src/tag'

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../inputfield.fx.css';
+import '../inputfield/inputfield.fx.css';
 import * as materialColor from 'material-colors';
 import Button from '../../button/Button';
 

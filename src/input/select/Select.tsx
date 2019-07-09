@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as materialColor from 'material-colors';
-import '../inputfield.fx.css';
+import '../inputfield/inputfield.fx.css';
 
 type SelectProps = {
     name: string;
