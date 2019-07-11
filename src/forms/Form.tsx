@@ -40,6 +40,8 @@ type FormInput = {
     options?: any;
     showCancelButton?: boolean;
     active?: boolean;
+    leftIcon?: string;
+    rightIcon?: string;
 };
 
 type FormProps = {
@@ -89,7 +91,9 @@ export default class Form extends React.Component<FormProps, FormState> {
             maxLength,
             align,
             options,
-            showCancelButton
+            showCancelButton,
+            leftIcon,
+            rightIcon
         } = input;
 
         if (mode === undefined) {
@@ -139,6 +143,8 @@ export default class Form extends React.Component<FormProps, FormState> {
                     hint={hint}
                     active={active}
                     loading={loading}
+                    leftIcon={leftIcon}
+                    rightIcon={rightIcon}
                 />
             );
         } else if (type === 'textarea') {
@@ -177,9 +183,9 @@ export default class Form extends React.Component<FormProps, FormState> {
         } else {
             let lastFloat = undefined;
             const inputProps = inputs.map((input) => {
-                    lastFloat = input.float;
-                    return input;
-                })
+                lastFloat = input.float;
+                return input;
+            })
                 .map((input, i) => this.renderInput(input, i, onChange));
 
             let links = undefined;
