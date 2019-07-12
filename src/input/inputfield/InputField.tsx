@@ -11,7 +11,7 @@ type InputFieldProps = {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-    hint?: string;
+    hint?: string | JSX.Element;
     placeholder?: string;
     onEnterPress?: any;
     clickable?: boolean;
