@@ -21,6 +21,8 @@ type MessageState = {
     fade?: any;
 };
 
+// FIXME add a callback prop that is used to indicate wheher or not the message shall be displayed
+
 export default class Message extends React.Component<MessageProps, MessageState> {
     constructor(props: MessageProps) {
         super(props);

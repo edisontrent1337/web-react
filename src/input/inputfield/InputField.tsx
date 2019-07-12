@@ -11,6 +11,7 @@ type InputFieldProps = {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
     hint?: string | JSX.Element;
     placeholder?: string;
     onEnterPress?: any;
@@ -85,6 +86,16 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
         }
     };
 
+    // FIXME: Introduce value as state so it can be cleared on click
+
+    clearOnClick = () => {
+
+    };
+
+    onChange = () => {
+
+    };
+
     render() {
         if (!this.state.mounted) {
             return 'Loading';
@@ -107,7 +118,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             maxLength,
             color,
             showCancelButton,
-            align
+            align,
+            onClick
         } = this.props;
 
         const formattedHint = hint && <span>{hint}</span>;
@@ -190,6 +202,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                         }}
                         onFocus={this.onFocus}
                         onBlur={this.onBlur}
+                        onClick={onClick}
                         value={value}
                         onChange={onChange}
                         onKeyPress={e => {
