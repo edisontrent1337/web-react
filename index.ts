@@ -4,7 +4,7 @@ import {InputField, Select, TextArea} from "./src/input";
 import Hint from './src/hints/Hint';
 import Message from './src/message/Message';
 import Circle from './src/circle';
-import LoadingIndicator from './src/indicators/loadingindicator/index';
+import {LoadingIndicator, ActionFeedback} from './src/indicators';
 import Tag from './src/tag'
 // import Table from './src/table';
 import { Tab, TabBar } from './src/tab';
@@ -24,5 +24,6 @@ export {
     Tab,
     TabBar,
     Container,
-    Tag
+    Tag,
+    ActionFeedback
 };
