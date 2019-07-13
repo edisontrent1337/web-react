@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './button.fx.css';
-import LoadingIndicator from '../indicators/LoadingIndicator';
+import LoadingIndicator from '../indicators/loadingindicator/LoadingIndicator';
 
 type Maybe<T> = undefined | null | T;
 

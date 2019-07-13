@@ -4,7 +4,7 @@ import {InputField, Select, TextArea} from "./src/input";
 import Hint from './src/hints/Hint';
 import Message from './src/message/Message';
 import Circle from './src/circle';
-import LoadingIndicator from './src/indicators';
+import LoadingIndicator from './src/indicators/loadingindicator/index';
 import Tag from './src/tag'
 // import Table from './src/table';
 import { Tab, TabBar } from './src/tab';
