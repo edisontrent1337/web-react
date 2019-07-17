@@ -27,6 +27,7 @@ type FormInput = {
     value?: string | JSX.Element;
     onClickOrEnterPress?: () => void;
     onChange?: OnChangeCallback;
+    placeholder?: string;
     hint?: string;
     mode?: string;
     color?: string;
@@ -93,7 +94,8 @@ export default class Form extends React.Component<FormProps, FormState> {
             options,
             showCancelButton,
             leftIcon,
-            rightIcon
+            rightIcon,
+            placeholder
         } = input;
 
         if (mode === undefined) {
@@ -129,6 +131,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                         pattern={pattern}
                         maxLength={maxLength}
                         align={align}
+                        placeholder={placeholder}
                     />
                 </div>
             );
