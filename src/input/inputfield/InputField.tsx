@@ -24,6 +24,10 @@ type InputFieldProps = {
     color?: string;
     showCancelButton?: boolean;
     align?: any;
+    valid?: boolean;
+    validBorderColor?: string;
+    invalidBorderColor?: string;
+    clearOnClick?: boolean;
 };
 
 type InputFieldState = {
@@ -196,9 +200,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                             color: materialColor.blueGrey['800'],
                             fontSize: '16px',
                             width: width ? width : '100%',
-                            borderBottom: this.state.focused
-                                ? '1px solid ' + (color ? color : 'dodgerblue')
-                                : '1px solid ' + materialColor.grey['400']
+                            borderBottom: this.getBorderStyle()
                         }}
                         onFocus={this.onFocus}
                         onBlur={this.onBlur}
@@ -235,4 +237,18 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             </div>
         );
     }
+
+    getBorderStyle = () => {
+        const {color, valid, invalidBorderColor} = this.props;
+        let validColor = materialColor.grey[400];
+        if (typeof invalidBorderColor === 'undefined') {
+            return this.state.focused
+                ? '1px solid ' + (color || 'dodgerblue')
+                : '1px solid ' + validColor
+        }
+        else {
+            return '1px solid ' + (valid ? validColor : (invalidBorderColor || materialColor.red[400]))
+        }
+    }
 }
+
