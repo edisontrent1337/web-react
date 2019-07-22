@@ -15,7 +15,7 @@ export default class ActionFeedback extends React.Component<ActionFeedbackProps,
         return (
             <div style={{backgroundColor: this.props.backgroundColor}}
                 className={'actionFeedbackMessage ' + (this.props.actionFeedbackMessage === undefined ? 'hidden' : 'visible')}>
-                <span className={'mdi mdi-information-outline'}/>{this.props.actionFeedbackMessage}
+                <span className={'mdi mdi-information-outline icon'}/>{this.props.actionFeedbackMessage}
             </div>
         );
     }

@@ -20,3 +20,8 @@
     opacity: 0;
     transition: visibility 0s 2s, opacity 0.2s linear;
 }
+
+.icon {
+    padding-right: 6px;
+    font-size: 125%;
+}
