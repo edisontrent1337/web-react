@@ -121,6 +121,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             showCancelButton,
             align,
             onClick,
+            valid,
+            invalidBorderColor,
             onKeyPress
         } = this.props;
 
@@ -195,7 +197,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                                 ? '#FAFAFA'
                                 : materialColor.blueGrey['50'],
                             textAlign: align,
-                            color: materialColor.blueGrey['800'],
+                            color: valid === false ? (invalidBorderColor || materialColor.red[400]) : materialColor.blueGrey['700'],
                             fontSize: '16px',
                             width: width ? width : '100%',
                             borderBottom: this.getBorderStyle()
