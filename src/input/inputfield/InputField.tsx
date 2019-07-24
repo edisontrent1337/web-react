@@ -244,8 +244,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
     getBorderStyle = () => {
         const {color, valid, invalidBorderColor} = this.props;
         let validColor = materialColor.grey[400];
-        return '1px solid ' + this.state.focused ? (color || 'dodgerblue') :
-            (invalidBorderColor !== undefined ? (valid ? validColor : (invalidBorderColor)) : validColor);
+        return '1px solid ' + (this.state.focused ? (color || 'dodgerblue') :
+            (typeof invalidBorderColor !== 'undefined' ? (valid ? validColor : (invalidBorderColor)) : validColor));
     }
 }
 

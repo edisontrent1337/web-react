@@ -1,6 +1,6 @@
 {
   "name": "@edisontrent1337/web-react",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "Provides different React Components for web development.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
