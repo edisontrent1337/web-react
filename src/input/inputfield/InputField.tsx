@@ -13,6 +13,8 @@ type InputFieldProps = {
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
     onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     hint?: string | JSX.Element;
     placeholder?: string;
     onEnterPress?: any;
@@ -123,7 +125,9 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             onClick,
             valid,
             invalidBorderColor,
-            onKeyPress
+            onKeyPress,
+            onKeyDown,
+            onKeyUp
         } = this.props;
 
         const formattedHint = hint && <span>{hint}</span>;
@@ -219,6 +223,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                                 }
                             }
                         }}
+                        onKeyDown={onKeyDown}
+                        onKeyUp={onKeyUp}
                         name={name}
                         placeholder={placeholder}
                         pattern={pattern}
