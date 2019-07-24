@@ -12,6 +12,7 @@ type InputFieldProps = {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
     onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
+    onKeyPress?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     hint?: string | JSX.Element;
     placeholder?: string;
     onEnterPress?: any;
@@ -96,10 +97,6 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
 
     };
 
-    onChange = () => {
-
-    };
-
     render() {
         if (!this.state.mounted) {
             return 'Loading';
@@ -123,7 +120,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             color,
             showCancelButton,
             align,
-            onClick
+            onClick,
+            onKeyPress
         } = this.props;
 
         const formattedHint = hint && <span>{hint}</span>;
@@ -213,6 +211,11 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                                     onEnterPress(e);
                                 }
                             }
+                            else {
+                                if (onKeyPress) {
+                                    onKeyPress(e);
+                                }
+                            }
                         }}
                         name={name}
                         placeholder={placeholder}
@@ -241,14 +244,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
     getBorderStyle = () => {
         const {color, valid, invalidBorderColor} = this.props;
         let validColor = materialColor.grey[400];
-        if (typeof invalidBorderColor === 'undefined') {
-            return this.state.focused
-                ? '1px solid ' + (color || 'dodgerblue')
-                : '1px solid ' + validColor
-        }
-        else {
-            return '1px solid ' + (valid ? validColor : (invalidBorderColor || materialColor.red[400]))
-        }
+        return '1px solid ' + this.state.focused ? (color || 'dodgerblue') :
+            (valid ? validColor : (invalidBorderColor || materialColor.red[400]));
     }
 }
 
