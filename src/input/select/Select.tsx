@@ -49,12 +49,14 @@ export default class Select extends React.Component<SelectProps, SelectState> {
         } = this.props;
         const formattedHint = hint && <span> {hint} </span>;
         return (
-            <div style={{margin: '0px 0px 15px 0px'}}>
+            <div style={{
+                display: 'inline-block',
+                verticalAlign: 'top',
+            }}>
                 <label
                     style={{
                         color: '#616161',
                         fontSize: '12px',
-                        fontWeight: 'bold'
                     }}
                 >
                     {label}
@@ -66,8 +68,10 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                         display: 'table',
                         paddingLeft: '10px',
                         paddingRight: '10px',
+                        marginLeft: '-10px',
+                        color: color,
                         borderBottom: this.state.focused
-                            ? '1px solid ' + (color ? color : 'dodgerblue')
+                            ? '1px solid ' + (color || 'dodgerblue')
                             : '1px solid ' + materialColor.grey['400'],
                         backgroundColor: this.state.focused
                             ? '#FAFAFA'
@@ -85,7 +89,8 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             color: materialColor.blueGrey['800'],
                             display: 'table-cell',
                             backgroundColor: 'transparent',
-                            fontSize: '16px'
+                            fontSize: '16px',
+                            padding: '0'
                         }}
                     >
                         {options.map((option: string, i: number) => {
