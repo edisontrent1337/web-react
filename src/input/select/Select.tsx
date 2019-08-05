@@ -105,7 +105,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                                 <option
                                     onClick={this.onFocusOutHandler}
                                     key={i}
-                                    value={option.toLowerCase()}
+                                    value={option}
                                 >
                                     {option}
                                 </option>
