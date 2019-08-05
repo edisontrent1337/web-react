@@ -40,6 +40,9 @@ input, textarea, select {
     font-size: 12px;
 }
 
+input, textarea, .select-overhaul, textarea {
+    border-radius: 2px 2px 0 0;
+}
 textarea {
     border-bottom: 1px solid #CFD8DC;
 }

@@ -53,29 +53,32 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                 display: 'inline-block',
                 verticalAlign: 'top',
             }}>
-                <label
-                    style={{
-                        color: '#616161',
+                {label && <label
+					style={{
+                        color: materialColor.grey['700'],
                         fontSize: '12px',
+                        display: 'block'
                     }}
                 >
                     {label}
-                </label>
+                </label>}
                 <div
-                    className={'mdi mdi-chevron-down selector'}
+                    className={'mdi mdi-chevron-down select-overhaul'}
                     onClick={this.onFocusHandler}
                     style={{
                         display: 'table',
                         paddingLeft: '10px',
                         paddingRight: '10px',
-                        marginLeft: '-10px',
-                        color: color,
+                        paddingTop: '4px',
+                        height: '33px',
+                        marginTop: '-1px',
+                        color: this.state.focused ?  color : materialColor.grey[600],
                         borderBottom: this.state.focused
                             ? '1px solid ' + (color || 'dodgerblue')
                             : '1px solid ' + materialColor.grey['400'],
                         backgroundColor: this.state.focused
-                            ? '#FAFAFA'
-                            : materialColor.blueGrey['50'],
+                            ? materialColor.grey[50]
+                            : materialColor.grey[100],
                         transition: '0.3s'
                     }}
                 >
@@ -89,8 +92,8 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             color: materialColor.blueGrey['800'],
                             display: 'table-cell',
                             backgroundColor: 'transparent',
+                            marginTop: '-12px',
                             fontSize: '16px',
-                            padding: '0'
                         }}
                     >
                         {options.map((option: string, i: number) => {
