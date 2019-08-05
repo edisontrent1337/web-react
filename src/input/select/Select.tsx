@@ -11,6 +11,7 @@ type SelectProps = {
     id?: string;
     hint?: string;
     selectedOption?: string;
+    width?: string;
 };
 
 type SelectState = {
@@ -45,6 +46,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
             onChange,
             id,
             hint,
+            width,
             selectedOption
         } = this.props;
         const formattedHint = hint && <span> {hint} </span>;
@@ -52,6 +54,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
             <div style={{
                 display: 'inline-block',
                 verticalAlign: 'top',
+                width: width || '100%'
             }}>
                 {label && <label
 					style={{
@@ -79,6 +82,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                         backgroundColor: this.state.focused
                             ? materialColor.grey[50]
                             : materialColor.grey[100],
+                        width: width || '100%',
                         transition: '0.3s'
                     }}
                 >
