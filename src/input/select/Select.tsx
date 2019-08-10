@@ -62,20 +62,17 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                         fontSize: '12px',
                         display: 'block'
                     }}
-                >
+				>
                     {label}
-                </label>}
+				</label>}
                 <div
                     className={'mdi mdi-chevron-down select-overhaul'}
                     onClick={this.onFocusHandler}
                     style={{
-                        display: 'table',
                         paddingLeft: '10px',
                         paddingRight: '10px',
-                        paddingTop: '4px',
-                        height: '33px',
                         marginTop: '-1px',
-                        color: this.state.focused ?  color : materialColor.grey[600],
+                        color: this.state.focused ? color : materialColor.grey[600],
                         borderBottom: this.state.focused
                             ? '1px solid ' + (color || 'dodgerblue')
                             : '1px solid ' + materialColor.grey['400'],
@@ -84,7 +81,6 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             : materialColor.grey[100],
                         width: width || '100%',
                         transition: '0.3s',
-                        marginRight: '100px'
                     }}
                 >
                     <select
@@ -94,9 +90,10 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                         onChange={onChange}
                         defaultValue={selectedOption}
                         style={{
-                            color: materialColor.blueGrey['800'],
+                            color: this.state.focused ? color : materialColor.grey[800],
                             backgroundColor: 'transparent',
                             fontSize: '16px',
+                            height: '37px',
                         }}
                     >
                         {options.map((option: string, i: number) => {

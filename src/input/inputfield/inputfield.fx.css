@@ -65,8 +65,4 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
     border: 0;
     padding: 0;
 }
-@-moz-document url-prefix() { /* targets Firefox only */
-    select {
-        padding: 15px 0!important;
-    }
-}
+
