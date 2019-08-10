@@ -83,7 +83,8 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                             ? materialColor.grey[50]
                             : materialColor.grey[100],
                         width: width || '100%',
-                        transition: '0.3s'
+                        transition: '0.3s',
+                        marginRight: '100px'
                     }}
                 >
                     <select
@@ -94,9 +95,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                         defaultValue={selectedOption}
                         style={{
                             color: materialColor.blueGrey['800'],
-                            display: 'table-cell',
                             backgroundColor: 'transparent',
-                            marginTop: '-12px',
                             fontSize: '16px',
                         }}
                     >

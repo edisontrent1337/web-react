@@ -29,7 +29,6 @@ select {
 option {
     -moz-appearance: none;
     -webkit-appearance: none;
-    background-color: green;
 }
 
 input, textarea, select {
