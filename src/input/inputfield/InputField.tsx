@@ -30,6 +30,7 @@ type InputFieldProps = {
     valid?: boolean;
     validBorderColor?: string;
     invalidBorderColor?: string;
+    defaultValue?: string;
     clearOnClick?: boolean;
 };
 
@@ -112,6 +113,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             onChange,
             hint,
             placeholder,
+            defaultValue,
             onEnterPress: onEnterPress,
             clickable,
             label,
@@ -195,6 +197,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                 >
                     <input
                         type={type}
+                        defaultValue={defaultValue}
                         id={id}
                         style={{
                             backgroundColor: this.state.focused
