@@ -87,7 +87,7 @@ export default class Select extends React.Component<SelectProps, SelectState> {
                         onBlur={this.onFocusOutHandler}
                         name={id}
                         id={id}
-                        onChange={onChange}
+                        onChange={(e) => { if(onChange) onChange(e); e.stopPropagation();}}
                         defaultValue={selectedOption}
                         style={{
                             color: this.state.focused ? color : materialColor.grey[800],
