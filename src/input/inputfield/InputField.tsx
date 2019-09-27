@@ -173,7 +173,6 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
         return (
             <div
                 style={{
-                    ...this.props.style,
                     marginRight: float === 'left' ? '20px' : '0px',
                     display: 'inline-block',
                     verticalAlign: 'top',
@@ -202,6 +201,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                         defaultValue={defaultValue}
                         id={id}
                         style={{
+                            ...this.props.style,
                             backgroundColor: this.state.focused
                                 ? materialColor.grey[50]
                                 : materialColor.grey[100],
