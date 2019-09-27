@@ -32,6 +32,7 @@ type InputFieldProps = {
     invalidBorderColor?: string;
     defaultValue?: string;
     clearOnClick?: boolean;
+    style?: any;
 };
 
 type InputFieldState = {
@@ -172,6 +173,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
         return (
             <div
                 style={{
+                    ...this.props.style,
                     marginRight: float === 'left' ? '20px' : '0px',
                     display: 'inline-block',
                     verticalAlign: 'top',
