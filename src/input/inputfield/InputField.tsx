@@ -33,6 +33,7 @@ type InputFieldProps = {
     defaultValue?: string;
     clearOnClick?: boolean;
     style?: any;
+    backgroundColor?: string;
 };
 
 type InputFieldState = {
@@ -130,7 +131,8 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             invalidBorderColor,
             onKeyPress,
             onKeyDown,
-            onKeyUp
+            onKeyUp,
+            backgroundColor
         } = this.props;
 
         const formattedHint = hint && <span>{hint}</span>;
@@ -202,7 +204,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                         id={id}
                         style={{
                             ...this.props.style,
-                            backgroundColor: this.state.focused
+                            backgroundColor: backgroundColor || this.state.focused
                                 ? materialColor.grey[50]
                                 : materialColor.grey[100],
                             textAlign: align,
