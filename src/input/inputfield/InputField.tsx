@@ -204,9 +204,9 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                         id={id}
                         style={{
                             ...this.props.style,
-                            backgroundColor: backgroundColor || this.state.focused
+                            backgroundColor: backgroundColor || (this.state.focused
                                 ? materialColor.grey[50]
-                                : materialColor.grey[100],
+                                : materialColor.grey[100]),
                             textAlign: align,
                             color: valid === false ? (invalidBorderColor || materialColor.red[400]) : materialColor.blueGrey['700'],
                             fontSize: '16px',
