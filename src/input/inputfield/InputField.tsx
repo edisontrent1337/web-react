@@ -44,6 +44,8 @@ type InputFieldState = {
 };
 
 export default class InputField extends React.Component<InputFieldProps, InputFieldState> {
+    inputRef: HTMLInputElement | null = null;
+
     constructor(props: InputFieldProps) {
         super(props);
         this.state = {
@@ -95,6 +97,10 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
             this.props.onFocus(event);
         }
     };
+
+    focus = () => {
+        this.inputRef?.focus();
+    }
 
     // FIXME: Introduce value as state so it can be cleared on click
 
@@ -236,6 +242,7 @@ export default class InputField extends React.Component<InputFieldProps, InputFi
                         placeholder={placeholder}
                         pattern={pattern}
                         maxLength={maxLength}
+                        ref={ref => { this.inputRef = ref; }}
                     />
                     <div style={{fontSize: '12px', color: '#616161'}}>
                         {formattedHint}
